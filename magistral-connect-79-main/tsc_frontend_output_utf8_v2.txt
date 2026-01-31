@@ -1,0 +1,106 @@
+src/hooks/use-realtime-alerts.ts(50,11): error TS2322: Type 'FunctionComponentElement<Omit<ToastActionProps & RefAttributes<HTMLButtonElement>, "ref"> & RefAttributes<HTMLButtonElement>>' is not assignable to type 'ToastActionElement'.
+  Types of property 'props' are incompatible.
+    Property '$$typeof' is missing in type 'Omit<ToastActionProps & RefAttributes<HTMLButtonElement>, "ref"> & RefAttributes<HTMLButtonElement>' but required in type 'ForwardRefExoticComponent<Omit<ToastActionProps & RefAttributes<HTMLButtonElement>, "ref"> & RefAttributes<HTMLButtonElement>>'.
+src/hooks/use-realtime-alerts.ts(69,11): error TS2322: Type 'FunctionComponentElement<Omit<ToastActionProps & RefAttributes<HTMLButtonElement>, "ref"> & RefAttributes<HTMLButtonElement>>' is not assignable to type 'ToastActionElement'.
+  Types of property 'props' are incompatible.
+    Property '$$typeof' is missing in type 'Omit<ToastActionProps & RefAttributes<HTMLButtonElement>, "ref"> & RefAttributes<HTMLButtonElement>' but required in type 'ForwardRefExoticComponent<Omit<ToastActionProps & RefAttributes<HTMLButtonElement>, "ref"> & RefAttributes<HTMLButtonElement>>'.
+src/pages/Dashboard.tsx(447,17): error TS2304: Cannot find name 'Vote'.
+src/pages/Dashboard.tsx(975,26): error TS2367: This comparison appears to be unintentional because the types '"neutral"' and '"up"' have no overlap.
+src/pages/Dashboard.tsx(978,26): error TS2367: This comparison appears to be unintentional because the types '"neutral"' and '"down"' have no overlap.
+src/pages/Dashboard.tsx(981,42): error TS2367: This comparison appears to be unintentional because the types '"neutral"' and '"up"' have no overlap.
+src/pages/Fornecedores.tsx(118,105): error TS2345: Argument of type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' is not assignable to parameter of type 'Record<SupplierDocumentType, File> | (() => Record<SupplierDocumentType, File>)'.
+  Property 'policia_federal' is missing in type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' but required in type 'Record<SupplierDocumentType, File>'.
+src/pages/Fornecedores.tsx(125,120): error TS2345: Argument of type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' is not assignable to parameter of type 'Record<SupplierDocumentType, string> | (() => Record<SupplierDocumentType, string>)'.
+  Property 'policia_federal' is missing in type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' but required in type 'Record<SupplierDocumentType, string>'.
+src/pages/Fornecedores.tsx(132,135): error TS2345: Argument of type '{ afe: false; ae: false; licenca_sanitaria: false; crt: false; questionario: false; }' is not assignable to parameter of type 'Record<SupplierDocumentType, boolean> | (() => Record<SupplierDocumentType, boolean>)'.
+  Property 'policia_federal' is missing in type '{ afe: false; ae: false; licenca_sanitaria: false; crt: false; questionario: false; }' but required in type 'Record<SupplierDocumentType, boolean>'.
+src/pages/Fornecedores.tsx(174,26): error TS2345: Argument of type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, File>>'.
+  Property 'policia_federal' is missing in type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' but required in type 'Record<SupplierDocumentType, File>'.
+src/pages/Fornecedores.tsx(181,36): error TS2345: Argument of type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, string>>'.
+  Property 'policia_federal' is missing in type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' but required in type 'Record<SupplierDocumentType, string>'.
+src/pages/Fornecedores.tsx(196,26): error TS2345: Argument of type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, File>>'.
+  Property 'policia_federal' is missing in type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' but required in type 'Record<SupplierDocumentType, File>'.
+src/pages/Fornecedores.tsx(203,36): error TS2345: Argument of type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, string>>'.
+  Property 'policia_federal' is missing in type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' but required in type 'Record<SupplierDocumentType, string>'.
+src/pages/Fornecedores.tsx(210,43): error TS2345: Argument of type '{ afe: false; ae: false; licenca_sanitaria: false; crt: false; questionario: false; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, boolean>>'.
+  Property 'policia_federal' is missing in type '{ afe: false; ae: false; licenca_sanitaria: false; crt: false; questionario: false; }' but required in type 'Record<SupplierDocumentType, boolean>'.
+src/pages/Fornecedores.tsx(770,26): error TS2345: Argument of type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, File>>'.
+  Property 'policia_federal' is missing in type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' but required in type 'Record<SupplierDocumentType, File>'.
+src/pages/Fornecedores.tsx(777,36): error TS2345: Argument of type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, string>>'.
+  Property 'policia_federal' is missing in type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' but required in type 'Record<SupplierDocumentType, string>'.
+src/pages/Fornecedores.tsx(841,28): error TS2345: Argument of type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, File>>'.
+  Property 'policia_federal' is missing in type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' but required in type 'Record<SupplierDocumentType, File>'.
+src/pages/Fornecedores.tsx(848,38): error TS2345: Argument of type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, string>>'.
+  Property 'policia_federal' is missing in type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' but required in type 'Record<SupplierDocumentType, string>'.
+src/pages/Fornecedores.tsx(855,45): error TS2345: Argument of type '{ afe: false; ae: false; licenca_sanitaria: false; crt: false; questionario: false; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, boolean>>'.
+  Property 'policia_federal' is missing in type '{ afe: false; ae: false; licenca_sanitaria: false; crt: false; questionario: false; }' but required in type 'Record<SupplierDocumentType, boolean>'.
+src/pages/Fornecedores.tsx(2300,38): error TS2345: Argument of type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, File>>'.
+  Property 'policia_federal' is missing in type '{ afe: null; ae: null; licenca_sanitaria: null; crt: null; questionario: null; }' but required in type 'Record<SupplierDocumentType, File>'.
+src/pages/Fornecedores.tsx(2307,48): error TS2345: Argument of type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' is not assignable to parameter of type 'SetStateAction<Record<SupplierDocumentType, string>>'.
+  Property 'policia_federal' is missing in type '{ afe: string; ae: string; licenca_sanitaria: string; crt: string; questionario: string; }' but required in type 'Record<SupplierDocumentType, string>'.
+src/pages/Gestao.tsx(211,18): error TS2345: Argument of type '(Decision | { status: string; publishedAt: Date; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; createdAt: Date; createdBy: string; approvedAt?: Date; implementedAt?: Date; notes?: string; })[]' is not assignable to parameter of type 'SetStateAction<Decision[]>'.
+  Type '(Decision | { status: string; publishedAt: Date; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; createdAt: Date; createdBy: string; approvedAt?: Date; implementedAt?: Date; notes?: string; })[]' is not assignable to type 'Decision[]'.
+    Type 'Decision | { status: string; publishedAt: Date; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; createdAt: Date; createdBy: string; approvedAt?: Date; implementedAt?: Date; notes?: string; }' is not assignable to type 'Decision'.
+      Type '{ status: string; publishedAt: Date; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; createdAt: Date; createdBy: string; approvedAt?: Date; implementedAt?: Date; notes?: string; }' is not assignable to type 'Decision'.
+        Types of property 'status' are incompatible.
+          Type 'string' is not assignable to type '"approved" | "rejected" | "draft" | "published" | "implemented"'.
+src/pages/Gestao.tsx(341,16): error TS2345: Argument of type '(Voting | { status: string; openedAt: Date; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; createdAt: Date; ... 9 more ...; totalEligibleVoters: number; })[]' is not assignable to parameter of type 'SetStateAction<Voting[]>'.
+  Type '(Voting | { status: string; openedAt: Date; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; createdAt: Date; ... 9 more ...; totalEligibleVoters: number; })[]' is not assignable to type 'Voting[]'.
+    Type 'Voting | { status: string; openedAt: Date; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; createdAt: Date; ... 9 more ...; totalEligibleVoters: number; }' is not assignable to type 'Voting'.
+      Type '{ status: string; openedAt: Date; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; createdAt: Date; createdBy: string; ... 8 more ...; totalEligibleVoters: number; }' is not assignable to type 'Voting'.
+        Types of property 'status' are incompatible.
+          Type 'string' is not assignable to type '"open" | "approved" | "rejected" | "draft" | "closed"'.
+src/pages/Gestao.tsx(392,16): error TS2345: Argument of type '(Voting | { status: string; closedAt: Date; result: string; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; ... 9 more ...; totalEligibleVoters: number; })[]' is not assignable to parameter of type 'SetStateAction<Voting[]>'.
+  Type '(Voting | { status: string; closedAt: Date; result: string; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; ... 9 more ...; totalEligibleVoters: number; })[]' is not assignable to type 'Voting[]'.
+    Type 'Voting | { status: string; closedAt: Date; result: string; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; ... 9 more ...; totalEligibleVoters: number; }' is not assignable to type 'Voting'.
+      Type '{ status: string; closedAt: Date; result: string; id: string; title: string; description: string; category: "financial" | "operational" | "strategic" | "regulatory"; createdAt: Date; ... 8 more ...; totalEligibleVoters: number; }' is not assignable to type 'Voting'.
+        Types of property 'status' are incompatible.
+          Type 'string' is not assignable to type '"open" | "approved" | "rejected" | "draft" | "closed"'.
+src/pages/Laudos.tsx(142,27): error TS2304: Cannot find name 'SubstanceSuggestion'.
+src/pages/Laudos.tsx(238,38): error TS2304: Cannot find name 'Substance'.
+src/pages/Laudos.tsx(239,38): error TS2304: Cannot find name 'Substance'.
+src/pages/Laudos.tsx(240,26): error TS2304: Cannot find name 'Substance'.
+src/pages/Laudos.tsx(320,62): error TS2304: Cannot find name 'Substance'.
+src/pages/Laudos.tsx(508,45): error TS2304: Cannot find name 'Substance'.
+src/pages/Laudos.tsx(1285,7): error TS2322: Type '"g" | "mL" | "kg" | "L" | "un"' is not assignable to type '"g" | "mL" | "kg" | "L"'.
+  Type '"un"' is not assignable to type '"g" | "mL" | "kg" | "L"'.
+src/pages/Laudos.tsx(1288,7): error TS2322: Type '"g" | "mL" | "kg" | "L" | "un"' is not assignable to type '"g" | "mL" | "kg" | "L"'.
+  Type '"un"' is not assignable to type '"g" | "mL" | "kg" | "L"'.
+src/pages/Laudos.tsx(1368,26): error TS2304: Cannot find name 'SubstanceSuggestion'.
+src/pages/Laudos.tsx(2853,44): error TS2367: This comparison appears to be unintentional because the types '"g" | "mL"' and '"un"' have no overlap.
+src/pages/Laudos.tsx(2854,35): error TS2322: Type '"un"' is not assignable to type '"g" | "mL" | "kg" | "L"'.
+src/pages/Laudos.tsx(2896,160): error TS2367: This comparison appears to be unintentional because the types '"mL" | "L"' and '"un"' have no overlap.
+src/pages/Laudos.tsx(2902,116): error TS2367: This comparison appears to be unintentional because the types '"mL" | "L"' and '"un"' have no overlap.
+src/pages/Marketplace.tsx(2534,31): error TS2339: Property 'requiresAe' does not exist on type '{ id: string; name: string; }'.
+src/pages/Marketplace.tsx(2535,31): error TS2339: Property 'requiresPf' does not exist on type '{ id: string; name: string; }'.
+src/pages/Marketplace.tsx(2598,7): error TS2322: Type 'string' is not assignable to type '"g" | "mL" | "kg" | "L"'.
+src/pages/Marketplace.tsx(5377,31): error TS2339: Property 'getTime' does not exist on type 'string | Date'.
+  Property 'getTime' does not exist on type 'string'.
+src/pages/Marketplace.tsx(5377,55): error TS2339: Property 'getTime' does not exist on type 'string | Date'.
+  Property 'getTime' does not exist on type 'string'.
+src/pages/Marketplace.tsx(6078,47): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SetStateAction<"g" | "mL" | "kg" | "L">'.
+src/pages/Marketplace.tsx(6082,37): error TS2358: The left-hand side of an 'instanceof' expression must be of type 'any', an object type or a type parameter.
+src/pages/Marketplace.tsx(6179,47): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SetStateAction<"g" | "mL" | "kg" | "L">'.
+src/pages/Perfil.tsx(160,56): error TS2339: Property 'bankName' does not exist on type 'User'.
+src/pages/Perfil.tsx(161,52): error TS2339: Property 'agency' does not exist on type 'User'.
+src/pages/Perfil.tsx(162,54): error TS2339: Property 'account' does not exist on type 'User'.
+src/pages/Perfil.tsx(163,66): error TS2339: Property 'accountHolder' does not exist on type 'User'.
+src/pages/Perfil.tsx(164,62): error TS2339: Property 'accountType' does not exist on type 'User'.
+src/pages/Perfil.tsx(373,45): error TS2339: Property 'bankName' does not exist on type 'User'.
+src/pages/Perfil.tsx(778,35): error TS2339: Property 'bankName' does not exist on type 'User'.
+src/pages/Perfil.tsx(778,91): error TS2339: Property 'bankName' does not exist on type 'User'.
+src/pages/Perfil.tsx(844,30): error TS2749: 'User' refers to a value, but is being used as a type here. Did you mean 'typeof User'?
+src/pages/Perfil.tsx(1982,99): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected"' and '""' have no overlap.
+src/pages/Perfil.tsx(1987,80): error TS2367: This comparison appears to be unintentional because the types '"pending"' and '"cancelled"' have no overlap.
+src/pages/Solicitacoes.tsx(152,89): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected" | "cancelled"' and '""' have no overlap.
+src/pages/Solicitacoes.tsx(166,80): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected"' and '""' have no overlap.
+src/pages/Solicitacoes.tsx(180,80): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected"' and '""' have no overlap.
+src/pages/Solicitacoes.tsx(195,80): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected"' and '""' have no overlap.
+src/pages/Solicitacoes.tsx(521,95): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected"' and '""' have no overlap.
+src/pages/Solicitacoes.tsx(540,20): error TS2367: This comparison appears to be unintentional because the types '"pending" | "approved" | "rejected"' and '""' have no overlap.
+src/pages/Solicitacoes.tsx(1033,80): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected"' and '""' have no overlap.
+src/pages/Solicitacoes.tsx(1053,80): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected"' and '""' have no overlap.
+src/pages/Solicitacoes.tsx(1309,120): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected"' and '""' have no overlap.
+src/pages/Solicitacoes.tsx(1329,120): error TS2367: This comparison appears to be unintentional because the types '"approved" | "rejected"' and '""' have no overlap.
+src/pages/Usuarios.tsx(1386,22): error TS2304: Cannot find name 'Separator'.
+src/pages/Usuarios.tsx(1420,22): error TS2304: Cannot find name 'Separator'.

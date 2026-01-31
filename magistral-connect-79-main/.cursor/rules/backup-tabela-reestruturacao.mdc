@@ -1,0 +1,33 @@
+---
+description: Backup de tabelas ao reestruturar o banco – usar como seed e validar antes de apagar
+alwaysApply: true
+---
+
+# Backup de tabela ao reestruturar o banco
+
+Ao **reestruturar** ou **alterar** tabelas (schema.prisma, SQL, migrações):
+
+## 1. Antes de alterar
+
+- **Sempre** criar uma **tabela de backup** da tabela a ser alterada (ex.: `User_backup`, `RawMaterial_20250123`).
+- O backup serve como **seed** para a tabela após o ajuste e garante dados a salvo caso a tabela precise ser **recriada**.
+- Exemplo: `CREATE TABLE User_backup AS SELECT * FROM User;` (MySQL) ou equivalente no Prisma/migração.
+
+## 2. Fazer o ajuste
+
+- Aplicar as alterações na tabela (ALTER TABLE, nova tabela, etc.), preservando dados conforme a regra “Proteção do schema e do banco”.
+
+## 3. Após o ajuste – comparar e preencher
+
+- **Comparar** os cadastros da **tabela ajustada** com os da **tabela de backup** (por ID ou chave única).
+- Se **faltar** algum registro na tabela ajustada, a **tabela nova/ajustada** deve **receber** esses cadastros a partir do backup (INSERT … SELECT, script de migração, ou seed).
+- Repetir até garantir que **todos** os registros do backup estejam na tabela ajustada.
+
+## 4. Apagar o backup só depois de validar
+
+- **Só** apagar a tabela de backup **após confirmar** que todos os cadastros do backup constam na tabela ajustada.
+- Documentar brevemente o que foi comparado (contagem, amostra de IDs) antes do `DROP TABLE backup`.
+
+## Resumo do fluxo
+
+1. Backup da tabela → 2. Ajuste na tabela → 3. Comparar (ajustada vs backup) → 4. Inserir faltantes na ajustada → 5. Validar que nada faltou → 6. `DROP` da tabela de backup

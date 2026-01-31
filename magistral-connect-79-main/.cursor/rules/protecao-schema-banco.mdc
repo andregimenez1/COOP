@@ -1,0 +1,33 @@
+---
+description: Regras de proteção do schema/banco – evitar perda de dados em correções
+alwaysApply: true
+---
+
+# Proteção do schema e do banco de dados
+
+Ao corrigir bugs ou conflitos que envolvam **schema.prisma** ou **SQL**:
+
+## Nunca destruir dados
+
+- **NÃO** apague colunas ou tabelas existentes para resolver conflitos.
+- **Prefira**: criar novas colunas ou **renomear** as atuais (ex.: `nome` → `nome_legado`, depois nova `nome`).
+- **Sempre** use `ALTER TABLE` em vez de recriar a tabela do zero.
+
+## Antes de mudar estrutura
+
+- Se a mudança **puder causar perda de dados**: **pare**, avise o usuário e só prossiga após confirmação.
+- **Priorize** correções no **código** (lógica da aplicação) antes de alterar a estrutura do MySQL.
+
+## Erros de tipo ou formato
+
+- Em caso de erro de tipo ou incompatibilidade: sugira **migração de dados** ou **script de tratamento** (transformação, validação, default).
+- **NÃO** sugira limpar o campo ou truncar dados para “resolver” o tipo.
+
+## Resumo
+
+| Evitar | Fazer |
+|--------|--------|
+| `DROP TABLE` / `DROP COLUMN` | `ALTER TABLE … ADD` / `RENAME COLUMN` |
+| Recriar tabela do zero | `ALTER TABLE` incremental |
+| Limpar campo para “corrigir” tipo | Migração + script de transformação |
+| Mudar schema sem avisar risco | Parar, avisar, só prosseguir se autorizado |

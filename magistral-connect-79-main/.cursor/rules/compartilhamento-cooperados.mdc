@@ -1,0 +1,90 @@
+---
+description: Regras de compartilhamento e acesso entre cooperados
+alwaysApply: true
+---
+
+# Compartilhamento e Acesso entre Cooperados
+
+## Regra Fundamental
+
+**TUDO que pode ser armazenado no banco de dados DEVE estar no banco de dados.**
+
+**TUDO que é de acesso para cooperados DEVE ser compartilhado entre TODOS os cooperados.**
+
+**A ÚNICA exceção são recursos explicitamente declarados como "meus" (exclusivos do usuário).**
+
+## Recursos Compartilhados (Todos os Cooperados)
+
+Estes recursos devem ser acessíveis por **TODOS** os cooperados, sem filtro por `userId`:
+
+- ✅ **Fornecedores** - Todos os fornecedores aprovados
+- ✅ **Substâncias** - Todas as substâncias cadastradas
+- ✅ **Solicitações** - Admin vê todas, usuários veem as suas próprias
+- ✅ **Ofertas do Marketplace** - Todas as ofertas ativas
+- ✅ **Cotações** - Todas as cotações
+- ✅ **Qualquer recurso público/compartilhado**
+
+## Recursos Exclusivos (Apenas do Usuário)
+
+Estes recursos são exclusivos e devem ser filtrados por `userId`:
+
+- 🔒 **Meus Laudos** - Laudos do próprio usuário
+- 🔒 **Meu Perfil** - Dados pessoais do próprio usuário
+- 🔒 **Minhas Notificações** - Notificações do próprio usuário
+- 🔒 **Meus Dados Bancários** - Dados bancários do próprio usuário
+- 🔒 **Minhas Contribuições Financeiras** - Dados financeiros do próprio usuário
+- 🔒 **Qualquer recurso explicitamente marcado como "meu"**
+
+## Implementação
+
+### Backend - Endpoints Compartilhados
+
+```typescript
+// ✅ CORRETO - Retornar todos os recursos
+const suppliers = await prisma.supplier.findMany({
+  orderBy: { createdAt: 'desc' },
+});
+
+// ❌ ERRADO - Filtrar por userId quando deveria ser compartilhado
+const suppliers = await prisma.supplier.findMany({
+  where: { userId }, // NÃO fazer isso para recursos compartilhados
+});
+```
+
+### Backend - Endpoints Exclusivos
+
+```typescript
+// ✅ CORRETO - Filtrar por userId para recursos exclusivos
+const laudos = await prisma.rawMaterial.findMany({
+  where: { userId }, // Correto para "meus laudos"
+  orderBy: { createdAt: 'desc' },
+});
+```
+
+## Checklist ao Criar/Modificar Endpoints
+
+- [ ] Este recurso é compartilhado ou exclusivo?
+- [ ] Se compartilhado: remover filtro `where: { userId }`
+- [ ] Se exclusivo: manter filtro `where: { userId }`
+- [ ] Documentar no código se é compartilhado ou exclusivo
+- [ ] Testar que todos os cooperados podem acessar recursos compartilhados
+
+## Exemplos de Recursos
+
+### Compartilhados
+- Lista de fornecedores aprovados
+- Lista de substâncias disponíveis
+- Ofertas do marketplace
+- Cotações públicas
+- Notícias e avisos
+
+### Exclusivos
+- Laudos do usuário (`/laudos` - apenas os meus)
+- Perfil do usuário (`/perfil` - apenas o meu)
+- Notificações do usuário (apenas as minhas)
+- Dados bancários do usuário (apenas os meus)
+- Histórico financeiro do usuário (apenas o meu)
+
+## Prioridade
+
+Esta regra tem **ALTA PRIORIDADE**. Sempre verifique se recursos compartilhados estão realmente acessíveis a todos os cooperados.

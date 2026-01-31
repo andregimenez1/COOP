@@ -1,0 +1,95 @@
+═══════════════════════════════════════════════════════════════
+  COMO MIGRAR DADOS DO LOCALSTORAGE PARA MYSQL
+═══════════════════════════════════════════════════════════════
+
+Se você tem dados no localStorage que quer migrar para o MySQL:
+
+═══════════════════════════════════════════════════════════════
+PASSO 1: Fazer Login como Master
+═══════════════════════════════════════════════════════════════
+
+1. Acesse: http://localhost:8080/login
+2. Faça login como: admin@magistral.com / admin123
+
+═══════════════════════════════════════════════════════════════
+PASSO 2: Abrir Console do Navegador
+═══════════════════════════════════════════════════════════════
+
+1. Pressione F12 (ou clique com botão direito → Inspecionar)
+2. Vá para a aba "Console"
+
+═══════════════════════════════════════════════════════════════
+PASSO 3: Executar Script de Migração
+═══════════════════════════════════════════════════════════════
+
+OPÇÃO 1 - Mais Simples (Recomendado):
+Copie e cole este código no console:
+
+```javascript
+import('/src/scripts/migrate-all-localStorage-to-api.ts').then(m => m.migrateAllLocalStorageToAPI());
+```
+
+OPÇÃO 2 - Com tratamento de erros:
+```javascript
+import('/src/scripts/migrate-all-localStorage-to-api.ts')
+  .then(module => module.migrateAllLocalStorageToAPI())
+  .then(results => console.log('✅ Migração concluída!', results))
+  .catch(err => console.error('❌ Erro:', err));
+```
+
+OPÇÃO 3 - Se o script já estiver carregado:
+```javascript
+migrateAllLocalStorageToAPI();
+```
+
+═══════════════════════════════════════════════════════════════
+O QUE SERÁ MIGRADO
+═══════════════════════════════════════════════════════════════
+
+✅ Substâncias (magistral_substances)
+✅ Sugestões de substâncias pendentes (magistral_substance_suggestions)
+✅ Fornecedores (magistral_suppliers)
+✅ Solicitações de fornecedor pendentes (magistral_supplier_requests)
+✅ Solicitações de dados bancários pendentes (magistral_bank_data_requests)
+✅ Solicitações de usuários extras pendentes (magistral_extra_users_requests)
+✅ Solicitações de saída pendentes (magistral_exit_requests)
+✅ Dados de usuários (magistral_users) - atualiza campos existentes
+
+⚠️  NOTA: Apenas dados PENDENTES são migrados.
+   Solicitações já aprovadas/rejeitadas são ignoradas.
+
+═══════════════════════════════════════════════════════════════
+VERIFICAÇÃO
+═══════════════════════════════════════════════════════════════
+
+Após executar o script:
+
+1. Veja o resumo no console
+2. Verifique no phpMyAdmin se os dados aparecem
+3. Recarregue a página - os dados devem aparecer automaticamente
+
+═══════════════════════════════════════════════════════════════
+O QUE NÃO PRECISA MIGRAR
+═══════════════════════════════════════════════════════════════
+
+❌ magistral_auth_user - Mantido no localStorage (necessário para sessão)
+❌ Dados já migrados pelo seed - Já estão no MySQL
+
+═══════════════════════════════════════════════════════════════
+LIMPAR LOCALSTORAGE (OPCIONAL)
+═══════════════════════════════════════════════════════════════
+
+APENAS após confirmar que tudo foi migrado com sucesso:
+
+```javascript
+// CUIDADO: Remove todos os dados exceto a sessão
+const keys = Object.keys(localStorage);
+keys.forEach(key => {
+  if (key !== 'magistral_auth_user') {
+    localStorage.removeItem(key);
+  }
+});
+console.log('✅ localStorage limpo (exceto sessão)');
+```
+
+═══════════════════════════════════════════════════════════════

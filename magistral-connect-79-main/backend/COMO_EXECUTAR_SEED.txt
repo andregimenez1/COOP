@@ -1,0 +1,84 @@
+═══════════════════════════════════════════════════════════════
+  COMO EXECUTAR O SEED E CRIAR OS USUÁRIOS NO BANCO
+═══════════════════════════════════════════════════════════════
+
+PROBLEMA: A tabela User está vazia no phpMyAdmin
+
+SOLUÇÃO: Execute o seed do Prisma para criar os usuários iniciais
+
+═══════════════════════════════════════════════════════════════
+OPÇÃO 1: Via PowerShell (RECOMENDADO)
+═══════════════════════════════════════════════════════════════
+
+1. Abra o PowerShell
+2. Navegue até a pasta do backend:
+   cd "c:\Users\NatuS ADM\Desktop\magistral-connect-79-main\backend"
+
+3. Execute o seed:
+   npm run prisma:seed
+
+   OU diretamente:
+   npx tsx prisma/seed.ts
+
+═══════════════════════════════════════════════════════════════
+OPÇÃO 2: Se der erro de permissão (EPERM)
+═══════════════════════════════════════════════════════════════
+
+1. Feche TODOS os terminais e processos Node.js
+2. Abra o PowerShell como ADMINISTRADOR
+3. Execute:
+   cd "c:\Users\NatuS ADM\Desktop\magistral-connect-79-main\backend"
+   npm run prisma:seed
+
+═══════════════════════════════════════════════════════════════
+OPÇÃO 3: Verificar se as migrações foram executadas
+═══════════════════════════════════════════════════════════════
+
+Antes de executar o seed, certifique-se de que as tabelas existem:
+
+1. Execute as migrações:
+   npx prisma migrate dev --name init
+
+2. Depois execute o seed:
+   npm run prisma:seed
+
+═══════════════════════════════════════════════════════════════
+VERIFICAÇÃO
+═══════════════════════════════════════════════════════════════
+
+Após executar o seed com sucesso:
+
+1. Abra o phpMyAdmin: http://localhost/phpmyadmin
+2. Selecione o banco: magistral_connect
+3. Abra a tabela: User
+4. Deve aparecer 6 usuários:
+   - admin@magistral.com / admin123 (master)
+   - cooperado@magistral.com / coop123
+   - usuario@magistral.com / user123
+   - natural@magistral.com / natural123
+   - farmagna@magistral.com / farmagna123
+   - roseiras@magistral.com / roseiras123
+
+═══════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════
+
+❌ Erro "EPERM" ou permissão negada:
+   → Feche processos Node.js
+   → Execute PowerShell como Administrador
+   → Tente: node --loader tsx/esm prisma/seed.ts
+
+❌ Erro "Cannot find module '@prisma/client'":
+   → Execute: npm install
+   → Depois: npx prisma generate
+
+❌ Erro de conexão com MySQL:
+   → Verifique se MySQL está rodando no XAMPP
+   → Verifique o arquivo .env (DATABASE_URL)
+   → Teste: npx prisma studio
+
+❌ Tabela User não existe:
+   → Execute primeiro: npx prisma migrate dev --name init
+   → Isso cria todas as tabelas
+
+═══════════════════════════════════════════════════════════════

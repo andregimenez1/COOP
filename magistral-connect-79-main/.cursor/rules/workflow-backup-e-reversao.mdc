@@ -1,0 +1,31 @@
+---
+description: Sempre criar backup de arquivos antes de ajustar e perguntar sobre reversão ao finalizar.
+globs: **/*
+alwaysApply: true
+---
+
+# Fluxo de Backup e Reversão
+
+Ao realizar qualquer ajuste ou modificação em um arquivo (código, configuração, etc.), o Cursor deve seguir obrigatoriamente este protocolo:
+
+## 1. Antes de Modificar
+- **Sempre** crie uma cópia de backup do arquivo original antes de aplicar qualquer mudança.
+- O backup deve ter o sufixo `.bak` (exemplo: `App.tsx` -> `App.tsx.bak`).
+- Utilize o comando de escrita de arquivo para criar essa cópia.
+
+## 2. Realizar as Alterações
+- Proceda com as edições solicitadas no arquivo original.
+
+## 3. Conclusão e Feedback
+- Ao terminar todas as alterações solicitadas, apresente o que foi feito e **pergunte obrigatoriamente ao usuário**:
+  - "Você gostou das alterações ou deseja reverter para a versão anterior?"
+- Ofereça as opções de:
+  - **Manter as mudanças**: O backup será excluído.
+  - **Reverter**: O arquivo original será substituído pelo conteúdo do backup e o backup será excluído.
+
+## 4. Limpeza
+- **Nunca** acumule arquivos de backup permanentemente.
+- Assim que o usuário decidir (manter ou reverter), o arquivo `.bak` correspondente **deve ser deletado** imediatamente.
+
+## Resumo do Fluxo
+1. Criar `arquivo.bak` -> 2. Editar `arquivo` -> 3. Perguntar ao usuário -> 4. Se Reverter: `arquivo` = `arquivo.bak` -> 5. Deletar `arquivo.bak`

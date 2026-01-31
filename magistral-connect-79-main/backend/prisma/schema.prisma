@@ -1,0 +1,1090 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model FinancialConfig {
+  id           String   @id @default(uuid())
+  totalApplied Float    @default(0)
+  cdiRate      Float    @default(0)
+  lastUpdate   DateTime @default(now())
+
+  @@map("financial_config")
+}
+
+model bankdatachangerequest {
+  id                 String                       @id
+  userId             String
+  userName           String
+  currentPixKey      String?
+  newPixKey          String?
+  pixBank            String?
+  bankName           String?
+  accountType        String?
+  agency             String?
+  account            String?
+  accountHolder      String?
+  currentCnpj        String?
+  newCnpj            String?
+  currentRazaoSocial String?
+  newRazaoSocial     String?
+  reason             String?
+  status             bankdatachangerequest_status @default(pending)
+  createdAt          DateTime                     @default(now())
+  reviewedAt         DateTime?
+  reviewedBy         String?
+  rejectionReason    String?
+  user               user                         @relation(fields: [userId], references: [id], map: "BankDataChangeRequest_userId_fkey")
+
+  @@index([status], map: "BankDataChangeRequest_status_idx")
+  @@index([userId], map: "BankDataChangeRequest_userId_idx")
+}
+
+model collectivepurchase {
+  id            String                    @id
+  name          String
+  deadline      DateTime
+  status        collectivepurchase_status @default(planning)
+  createdBy     String
+  createdAt     DateTime                  @default(now())
+  totalQuantity Float?
+  quotationId   String?
+
+  @@index([status], map: "CollectivePurchase_status_idx")
+}
+
+model cooperativerole {
+  id                        String                      @id @default(uuid())
+  name                      String                      @unique(map: "CooperativeRole_name_key")
+  description               String?                     @db.Text
+  createdAt                 DateTime                    @default(now())
+  updatedAt                 DateTime                    @default(now())
+  createdBy                 String?
+  cooperativerolepermission cooperativerolepermission[]
+  usercooperativerole       usercooperativerole[]
+
+  @@index([createdAt], map: "CooperativeRole_createdAt_idx")
+  @@index([updatedAt], map: "CooperativeRole_updatedAt_idx")
+}
+
+model cooperativerolepermission {
+  id              String          @id @default(uuid())
+  roleId          String
+  key             String
+  createdAt       DateTime        @default(now())
+  createdBy       String?
+  cooperativerole cooperativerole @relation(fields: [roleId], references: [id], onDelete: Cascade, map: "CooperativeRolePermission_roleId_fkey")
+
+  @@unique([roleId, key], map: "CooperativeRolePermission_roleId_key_key")
+  @@index([createdAt], map: "CooperativeRolePermission_createdAt_idx")
+  @@index([key], map: "CooperativeRolePermission_key_idx")
+  @@index([roleId], map: "CooperativeRolePermission_roleId_idx")
+}
+
+model decision {
+  id            String            @id @default(uuid())
+  title         String
+  description   String            @db.Text
+  category      decision_category
+  status        decision_status   @default(draft)
+  createdAt     DateTime          @default(now())
+  createdBy     String
+  publishedAt   DateTime?
+  approvedAt    DateTime?
+  implementedAt DateTime?
+  notes         String?           @db.Text
+
+  @@index([category], map: "Decision_category_idx")
+  @@index([status], map: "Decision_status_idx")
+}
+
+model exitrequest {
+  id              String             @id @default(uuid())
+  userId          String
+  userName        String
+  company         String?
+  cnpj            String?
+  currentValue    Float
+  reason          String?
+  status          exitrequest_status @default(pending)
+  createdAt       DateTime           @default(now())
+  reviewedAt      DateTime?
+  reviewedBy      String?
+  rejectionReason String?
+  user            user               @relation(fields: [userId], references: [id], map: "ExitRequest_userId_fkey")
+
+  @@index([status], map: "ExitRequest_status_idx")
+  @@index([userId], map: "ExitRequest_userId_idx")
+}
+
+model extrauserrequest {
+  id              String                  @id @default(uuid())
+  userId          String
+  userName        String
+  requestedUsers  String                  @db.LongText
+  reason          String?
+  status          extrauserrequest_status @default(pending)
+  createdAt       DateTime                @default(now())
+  reviewedAt      DateTime?
+  reviewedBy      String?
+  rejectionReason String?
+  user            user                    @relation(fields: [userId], references: [id], map: "ExtraUserRequest_userId_fkey")
+
+  @@index([status], map: "ExtraUserRequest_status_idx")
+  @@index([userId], map: "ExtraUserRequest_userId_idx")
+}
+
+model financialmovement {
+  id            String                 @id
+  type          financialmovement_type
+  userId        String?
+  userName      String?
+  amount        Float
+  description   String
+  relatedItemId String?
+  createdAt     DateTime               @default(now())
+  createdBy     String
+  user          user                   @relation(fields: [createdBy], references: [id], map: "FinancialMovement_createdBy_fkey")
+
+  @@index([createdAt], map: "FinancialMovement_createdAt_idx")
+  @@index([createdBy], map: "FinancialMovement_createdBy_fkey")
+  @@index([type], map: "FinancialMovement_type_idx")
+  @@index([userId], map: "FinancialMovement_userId_idx")
+}
+
+model flashdeal {
+  id             String           @id
+  productId      String
+  startTime      DateTime
+  endTime        DateTime
+  specialPrice   Float
+  stockLimit     Float
+  limitPerUser   Float?
+  unit           String           @default("g")
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime
+  product        product          @relation(fields: [productId], references: [id], onDelete: Cascade, map: "FlashDeal_productId_fkey")
+  flashdealclaim flashdealclaim[]
+
+  @@index([productId], map: "FlashDeal_productId_idx")
+  @@index([startTime, endTime], map: "FlashDeal_startTime_endTime_idx")
+}
+
+model flashdealclaim {
+  id           String                      @id @default(uuid())
+  flashDealId  String
+  userId       String
+  quantity     Float
+  deliveryType flashdealclaim_deliveryType
+  createdAt    DateTime                    @default(now())
+  flashdeal    flashdeal                   @relation(fields: [flashDealId], references: [id], onDelete: Cascade, map: "FlashDealClaim_flashDealId_fkey")
+  user         user                        @relation(fields: [userId], references: [id], onDelete: Cascade, map: "FlashDealClaim_userId_fkey")
+
+  @@index([flashDealId], map: "FlashDealClaim_flashDealId_idx")
+  @@index([userId], map: "FlashDealClaim_userId_idx")
+}
+
+model followedsubstance {
+  id          String     @id @default(uuid())
+  userId      String
+  substanceId String?
+  name        String
+  createdAt   DateTime   @default(now())
+  substance   substance? @relation(fields: [substanceId], references: [id], map: "FollowedSubstance_substanceId_fkey")
+  user        user       @relation(fields: [userId], references: [id], onDelete: Cascade, map: "FollowedSubstance_userId_fkey")
+
+  @@unique([userId, name], map: "FollowedSubstance_userId_name_key")
+  @@index([substanceId], map: "FollowedSubstance_substanceId_fkey")
+  @@index([userId], map: "FollowedSubstance_userId_idx")
+}
+
+model followeduser {
+  id                                  String   @id
+  followerId                          String
+  followingId                         String
+  createdAt                           DateTime @default(now())
+  user_followeduser_followerIdTouser  user     @relation("followeduser_followerIdTouser", fields: [followerId], references: [id], onDelete: Cascade, map: "FollowedUser_followerId_fkey")
+  user_followeduser_followingIdTouser user     @relation("followeduser_followingIdTouser", fields: [followingId], references: [id], onDelete: Cascade, map: "FollowedUser_followingId_fkey")
+
+  @@unique([followerId, followingId], map: "FollowedUser_followerId_followingId_key")
+  @@index([followerId], map: "FollowedUser_followerId_idx")
+  @@index([followingId], map: "FollowedUser_followingId_idx")
+}
+
+model inventoryitem {
+  id                                String       @id
+  substanceId                       String
+  rawMaterialId                     String?
+  batch                             String?
+  ownerId                           String
+  holderId                          String
+  quantity                          Float
+  unit                              String
+  expirationDate                    DateTime
+  isExcess                          Boolean      @default(false)
+  createdAt                         DateTime     @default(now())
+  updatedAt                         DateTime
+  user_inventoryitem_holderIdTouser user         @relation("inventoryitem_holderIdTouser", fields: [holderId], references: [id], onDelete: Cascade, map: "InventoryItem_holderId_fkey")
+  user_inventoryitem_ownerIdTouser  user         @relation("inventoryitem_ownerIdTouser", fields: [ownerId], references: [id], onDelete: Cascade, map: "InventoryItem_ownerId_fkey")
+  rawmaterial                       rawmaterial? @relation(fields: [rawMaterialId], references: [id], map: "InventoryItem_rawMaterialId_fkey")
+  substance                         substance    @relation(fields: [substanceId], references: [id], onDelete: Cascade, map: "InventoryItem_substanceId_fkey")
+
+  @@index([holderId], map: "InventoryItem_holderId_idx")
+  @@index([isExcess], map: "InventoryItem_isExcess_idx")
+  @@index([ownerId], map: "InventoryItem_ownerId_idx")
+  @@index([rawMaterialId], map: "InventoryItem_rawMaterialId_fkey")
+  @@index([substanceId], map: "InventoryItem_substanceId_idx")
+}
+
+model marketplaceconfig {
+  id                  String   @id @default("singleton")
+  minSellValidityDays Int      @default(30)
+  updatedAt           DateTime @default(now())
+  updatedBy           String?
+  marketplaceFee      Float    @default(0)
+
+  @@index([updatedAt], map: "MarketplaceConfig_updatedAt_idx")
+}
+
+model marketplaceoffer {
+  id                String                  @id
+  type              marketplaceoffer_type
+  rawMaterialId     String?
+  rawMaterialName   String?
+  quantity          Float
+  unit              String
+  pricePerUnit      Float
+  expiryDate        DateTime?
+  pdfUrl            String?
+  maxPrice          Float?
+  minExpiryDate     DateTime?
+  acceptShortExpiry Boolean?
+  userId            String
+  userName          String
+  companyName       String?
+  status            marketplaceoffer_status @default(active)
+  createdAt         DateTime                @default(now())
+  updatedAt         DateTime?
+  substanceId       String?
+  substanceName     String?
+  isAuction         Boolean?                @default(false)
+  startingPrice     Float?
+  currentBid        Float?
+  highestBidderId   String?
+  auctionEnd        DateTime?
+  bidCount          Int?                    @default(0)
+  substance         substance?              @relation(fields: [substanceId], references: [id], map: "MarketplaceOffer_substanceId_fkey")
+  user              user                    @relation(fields: [userId], references: [id], map: "MarketplaceOffer_userId_fkey")
+  highestbidder     user?                   @relation("highestbidder", fields: [highestBidderId], references: [id], map: "MarketplaceOffer_highestBidderId_fkey")
+  offerproposal     offerproposal[]
+  marketplacebid    marketplacebid[]
+
+  @@index([rawMaterialId], map: "MarketplaceOffer_rawMaterialId_idx")
+  @@index([status], map: "MarketplaceOffer_status_idx")
+  @@index([substanceId], map: "MarketplaceOffer_substanceId_idx")
+  @@index([type], map: "MarketplaceOffer_type_idx")
+  @@index([userId], map: "MarketplaceOffer_userId_idx")
+  @@index([highestBidderId])
+}
+
+model marketplacebid {
+  id               String           @id @default(uuid())
+  offerId          String
+  bidderId         String
+  amount           Float
+  createdAt        DateTime         @default(now())
+  marketplaceoffer marketplaceoffer @relation(fields: [offerId], references: [id], onDelete: Cascade, map: "MarketplaceBid_offerId_fkey")
+  user             user             @relation(fields: [bidderId], references: [id], onDelete: Cascade, map: "MarketplaceBid_bidderId_fkey")
+
+  @@index([offerId])
+  @@index([bidderId])
+}
+
+model notification {
+  id            String   @id
+  userId        String
+  type          String
+  title         String
+  message       String
+  relatedItemId String?
+  read          Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  user          user     @relation(fields: [userId], references: [id], map: "Notification_userId_fkey")
+
+  @@index([read], map: "Notification_read_idx")
+  @@index([userId], map: "Notification_userId_idx")
+}
+
+model offerproposal {
+  id                      String                  @id
+  offerId                 String
+  offerType               offerproposal_offerType
+  proposerId              String
+  proposerName            String
+  proposerCompany         String?
+  quantity                Float
+  unit                    String
+  productExpiryDate       DateTime?
+  status                  offerproposal_status    @default(pending)
+  counterProposalQuantity Float?
+  counterProposalMessage  String?
+  createdAt               DateTime                @default(now())
+  respondedAt             DateTime?
+  completedByProposer     Boolean?
+  completedByOfferOwner   Boolean?
+  completedAt             DateTime?
+  laudoId                 String?
+  substanceId             String?
+  substanceName           String?
+  isAgreement             Boolean?
+  cashAmount              Float?
+  tradeSubstanceId        String?
+  tradeSubstanceName      String?
+  tradeQuantity           Float?
+  tradeUnit               String?
+  tradeLaudoId            String?
+  rejectionReason         String?
+  marketplaceoffer        marketplaceoffer        @relation(fields: [offerId], references: [id], map: "OfferProposal_offerId_fkey")
+  user                    user                    @relation(fields: [proposerId], references: [id], map: "OfferProposal_proposerId_fkey")
+  transaction             transaction?
+
+  @@index([offerId], map: "OfferProposal_offerId_idx")
+  @@index([proposerId], map: "OfferProposal_proposerId_idx")
+  @@index([status], map: "OfferProposal_status_idx")
+}
+
+model pendingpayment {
+  id                  String    @id @default(uuid())
+  userId              String
+  userName            String
+  company             String?
+  cnpj                String?
+  amount              Float
+  reason              String
+  status              String    @default("pending")
+  createdAt           DateTime  @default(now())
+  paidAt              DateTime?
+  deletedUserSnapshot String?   @db.LongText
+
+  @@index([status], map: "PendingPayment_status_idx")
+  @@index([userId], map: "PendingPayment_userId_idx")
+}
+
+model product {
+  id             String           @id @default(uuid())
+  substanceId    String           @unique(map: "Product_substanceId_key")
+  targetStock    Float            @default(0)
+  currentStock   Float            @default(0)
+  unit           String           @default("g")
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime
+  flashdeal      flashdeal[]
+  substance      substance        @relation(fields: [substanceId], references: [id], onDelete: Cascade, map: "Product_substanceId_fkey")
+  strategicquota strategicquota[]
+
+  @@index([substanceId], map: "Product_substanceId_idx")
+}
+
+model purchaseitem {
+  id                   String              @id
+  userId               String
+  userName             String
+  substanceId          String
+  substanceName        String
+  quantity             Float
+  unit                 String
+  deadline             DateTime
+  status               purchaseitem_status @default(pending)
+  createdAt            DateTime            @default(now())
+  collectivePurchaseId String?
+  substance            substance           @relation(fields: [substanceId], references: [id], map: "PurchaseItem_substanceId_fkey")
+  user                 user                @relation(fields: [userId], references: [id], map: "PurchaseItem_userId_fkey")
+
+  @@index([status], map: "PurchaseItem_status_idx")
+  @@index([substanceId], map: "PurchaseItem_substanceId_fkey")
+  @@index([userId], map: "PurchaseItem_userId_idx")
+}
+
+model quotation {
+  id            String    @id
+  userId        String
+  userName      String
+  substanceId   String
+  substanceName String
+  supplierId    String
+  supplierName  String
+  validity      DateTime
+  variations    String    @db.LongText
+  quotationDate DateTime  @default(now())
+  notes         String?
+  substance     substance @relation(fields: [substanceId], references: [id], map: "Quotation_substanceId_fkey")
+  user          user      @relation(fields: [userId], references: [id], map: "Quotation_userId_fkey")
+
+  @@index([substanceId], map: "Quotation_substanceId_idx")
+  @@index([userId], map: "Quotation_userId_idx")
+}
+
+model rawmaterial {
+  id                String          @id
+  substanceId       String
+  substanceName     String
+  batch             String
+  supplier          String
+  manufacturer      String?
+  manufacturingDate DateTime
+  expiryDate        DateTime
+  pdfUrl            String?
+  pdfFileName       String?
+  createdBy         String
+  isExpired         Boolean         @default(false)
+  purchaseDate      DateTime?
+  purchaseQuantity  Float?
+  purchaseUnit      String?
+  purchasePrice     Float?
+  createdAt         DateTime        @default(now())
+  inventoryitem     inventoryitem[]
+  user              user            @relation(fields: [createdBy], references: [id], map: "RawMaterial_createdBy_fkey")
+  substance         substance       @relation(fields: [substanceId], references: [id], map: "RawMaterial_substanceId_fkey")
+
+  @@index([createdBy], map: "RawMaterial_createdBy_idx")
+  @@index([isExpired], map: "RawMaterial_isExpired_idx")
+  @@index([substanceId], map: "RawMaterial_substanceId_idx")
+}
+
+model strategicquota {
+  id                    String                  @id @default(uuid())
+  totalReserved         Float
+  resetDate             DateTime
+  periodDays            Int                     @default(30)
+  unit                  String                  @default("g")
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime
+  product               product                 @relation(fields: [productId], references: [id], onDelete: Cascade, map: "StrategicQuota_productId_fkey")
+  strategicreserveclaim strategicreserveclaim[]
+  productId             String
+
+  @@index([productId], map: "StrategicQuota_productId_idx")
+  @@index([resetDate], map: "StrategicQuota_resetDate_idx")
+}
+
+model strategicreserveclaim {
+  id               String                             @id @default(uuid())
+  strategicQuotaId String
+  userId           String
+  quantity         Float
+  deliveryType     strategicreserveclaim_deliveryType
+  claimedAt        DateTime                           @default(now())
+  strategicquota   strategicquota                     @relation(fields: [strategicQuotaId], references: [id], onDelete: Cascade, map: "StrategicReserveClaim_strategicQuotaId_fkey")
+  user             user                               @relation(fields: [userId], references: [id], onDelete: Cascade, map: "StrategicReserveClaim_userId_fkey")
+
+  @@index([strategicQuotaId], map: "StrategicReserveClaim_strategicQuotaId_idx")
+  @@index([strategicQuotaId, userId], map: "StrategicReserveClaim_strategicQuotaId_userId_idx")
+  @@index([userId], map: "StrategicReserveClaim_userId_idx")
+}
+
+model substance {
+  id                String              @id @default(uuid())
+  name              String              @unique(map: "Substance_name_key")
+  synonyms          String?             @db.LongText
+  createdAt         DateTime            @default(now())
+  createdBy         String?
+  requiresAe        Boolean             @default(false)
+  requiresPf        Boolean             @default(false)
+  followedsubstance followedsubstance[]
+  inventoryitem     inventoryitem[]
+  marketplaceoffer  marketplaceoffer[]
+  product           product?
+  purchaseitem      purchaseitem[]
+  quotation         quotation[]
+  rawmaterial       rawmaterial[]
+}
+
+model substancesuggestion {
+  id              String                     @id @default(uuid())
+  name            String
+  suggestedName   String?
+  userId          String
+  userName        String
+  status          substancesuggestion_status @default(pending)
+  rejectionReason String?
+  createdAt       DateTime                   @default(now())
+  expiresAt       DateTime
+  approvedAt      DateTime?
+  rejectedAt      DateTime?
+  user            user                       @relation(fields: [userId], references: [id], map: "SubstanceSuggestion_userId_fkey")
+
+  @@index([status], map: "SubstanceSuggestion_status_idx")
+  @@index([userId], map: "SubstanceSuggestion_userId_idx")
+}
+
+model supplier {
+  id        String   @id @default(uuid())
+  userId    String
+  name      String
+  contact   String?
+  whatsapp  String?
+  notes     String?
+  createdAt DateTime @default(now())
+  user      user     @relation(fields: [userId], references: [id], map: "Supplier_userId_fkey")
+
+  @@index([userId], map: "Supplier_userId_idx")
+}
+
+model supplierdocument {
+  id                           String                         @id @default(uuid())
+  type                         supplierdocument_type
+  fileName                     String
+  fileUrl                      String
+  uploadedAt                   DateTime                       @default(now())
+  uploadedBy                   String
+  reviewStatus                 supplierdocument_reviewStatus  @default(pending)
+  reviewedAt                   DateTime?
+  reviewedBy                   String?
+  rejectionReason              String?
+  validUntil                   DateTime?
+  validIndefinitely            Boolean                        @default(false)
+  supplierqualification        supplierqualification[]        @relation("supplierdocumenttosupplierqualification")
+  supplierqualificationrequest supplierqualificationrequest[] @relation("supplierdocumenttosupplierqualificationrequest")
+}
+
+model supplierdocumentvaliditypolicy {
+  id        String                              @id @default(uuid())
+  type      supplierdocumentvaliditypolicy_type @unique(map: "SupplierDocumentValidityPolicy_type_key")
+  mode      supplierdocumentvaliditypolicy_mode @default(indefinite)
+  months    Int?
+  updatedAt DateTime                            @default(now())
+  updatedBy String?
+}
+
+model supplierqualification {
+  id               String             @id @default(uuid())
+  supplierId       String
+  supplierName     String
+  year             Int
+  status           String             @default("complete")
+  qualifiedBy      String
+  qualifiedByName  String
+  completedAt      DateTime           @default(now())
+  expiresAt        DateTime
+  supplierdocument supplierdocument[] @relation("supplierdocumenttosupplierqualification")
+}
+
+model supplierqualificationrequest {
+  id                  String                              @id @default(uuid())
+  supplierId          String
+  supplierName        String
+  requestedBy         String
+  requestedByName     String
+  status              supplierqualificationrequest_status @default(pending)
+  requestedAt         DateTime                            @default(now())
+  completedAt         DateTime?
+  completedBy         String?
+  year                Int
+  pendingUsers        String                              @db.LongText
+  awaitingAdminReview Boolean                             @default(false)
+  supplierdocument    supplierdocument[]                  @relation("supplierdocumenttosupplierqualificationrequest")
+}
+
+model supplierrequest {
+  id              String                 @id @default(uuid())
+  name            String
+  userId          String
+  userName        String
+  company         String?
+  status          supplierrequest_status @default(pending)
+  rejectionReason String?
+  createdAt       DateTime               @default(now())
+  reviewedAt      DateTime?
+  reviewedBy      String?
+  supplierId      String?
+  user            user                   @relation(fields: [userId], references: [id], map: "SupplierRequest_userId_fkey")
+
+  @@index([status], map: "SupplierRequest_status_idx")
+  @@index([userId], map: "SupplierRequest_userId_idx")
+}
+
+model transaction {
+  id                              String                 @id
+  proposalId                      String?                @unique(map: "Transaction_proposalId_key")
+  offerId                         String?
+  offerType                       transaction_offerType?
+  substanceId                     String
+  substanceName                   String
+  quantity                        Float
+  unit                            String
+  pricePerUnit                    Float?
+  totalPrice                      Float?
+  sellerId                        String
+  sellerName                      String
+  buyerId                         String
+  buyerName                       String
+  laudoId                         String?
+  laudoPdfUrl                     String?
+  laudoFileName                   String?
+  completedAt                     DateTime               @default(now())
+  createdAt                       DateTime               @default(now())
+  type                            transaction_type       @default(MARKETPLACE)
+  user_transaction_buyerIdTouser  user                   @relation("transaction_buyerIdTouser", fields: [buyerId], references: [id], onDelete: Cascade, map: "Transaction_buyerId_fkey")
+  offerproposal                   offerproposal?         @relation(fields: [proposalId], references: [id], map: "Transaction_proposalId_fkey")
+  user_transaction_sellerIdTouser user                   @relation("transaction_sellerIdTouser", fields: [sellerId], references: [id], onDelete: Cascade, map: "Transaction_sellerId_fkey")
+
+  @@index([buyerId], map: "Transaction_buyerId_idx")
+  @@index([completedAt], map: "Transaction_completedAt_idx")
+  @@index([sellerId], map: "Transaction_sellerId_idx")
+  @@index([type], map: "Transaction_type_idx")
+}
+
+model transparencynews {
+  id            String                    @id
+  title         String
+  content       String                    @db.Text
+  category      transparencynews_category
+  relatedItemId String?
+  createdAt     DateTime                  @default(now())
+  createdBy     String
+  isPinned      Boolean                   @default(false)
+  status        String                    @default("pending")
+  approvedAt    DateTime?
+  approvedBy    String?
+  page          String                    @default("dashboard")
+
+  @@index([category], map: "TransparencyNews_category_idx")
+  @@index([createdAt], map: "TransparencyNews_createdAt_idx")
+  @@index([isPinned], map: "TransparencyNews_isPinned_idx")
+  @@index([page], map: "TransparencyNews_page_idx")
+  @@index([status], map: "TransparencyNews_status_idx")
+}
+
+model user {
+  id                                          String                       @id @default(uuid())
+  name                                        String
+  email                                       String                       @unique(map: "User_email_key")
+  password                                    String
+  role                                        user_role                    @default(padrao)
+  company                                     String?
+  cnpj                                        String?
+  razaoSocial                                 String?
+  approved                                    Boolean                      @default(false)
+  status                                      user_status                  @default(active)
+  contribution                                Float                        @default(0)
+  currentValue                                Float                        @default(0)
+  proceeds                                    Float?
+  balanceToReceive                            Float?
+  pixKey                                      String?
+  pixBank                                     String?
+  pixQrCode                                   String?
+  profilePicture                              String?
+  createdAt                                   DateTime                     @default(now())
+  bannedAt                                    DateTime?
+  isCooperativaAdmin                          Boolean                      @default(false)
+  notifyEmailFlashDeals                       Boolean                      @default(false)
+  notifyEmailReservas                         Boolean                      @default(false)
+  notifyEmailHubCredit                        Boolean                      @default(false)
+  bankdatachangerequest                       bankdatachangerequest[]
+  exitrequest                                 exitrequest[]
+  extrauserrequest                            extrauserrequest[]
+  financialmovement                           financialmovement[]
+  flashdealclaim                              flashdealclaim[]
+  followedsubstance                           followedsubstance[]
+  followeduser_followeduser_followerIdTouser  followeduser[]               @relation("followeduser_followerIdTouser")
+  followeduser_followeduser_followingIdTouser followeduser[]               @relation("followeduser_followingIdTouser")
+  inventoryitem_inventoryitem_holderIdTouser  inventoryitem[]              @relation("inventoryitem_holderIdTouser")
+  inventoryitem_inventoryitem_ownerIdTouser   inventoryitem[]              @relation("inventoryitem_ownerIdTouser")
+  marketplaceoffer                            marketplaceoffer[]
+  notification                                notification[]
+  offerproposal                               offerproposal[]
+  purchaseitem                                purchaseitem[]
+  quotation                                   quotation[]
+  rawmaterial                                 rawmaterial[]
+  strategicreserveclaim                       strategicreserveclaim[]
+  substancesuggestion                         substancesuggestion[]
+  supplier                                    supplier[]
+  supplierrequest                             supplierrequest[]
+  transaction_transaction_buyerIdTouser       transaction[]                @relation("transaction_buyerIdTouser")
+  transaction_transaction_sellerIdTouser      transaction[]                @relation("transaction_sellerIdTouser")
+  usercooperativerole                         usercooperativerole[]
+  userpermission                              userpermission[]
+  userprofiledocument                        userprofiledocument[]
+  userprofiledocumentrequest                 userprofiledocumentrequest[]
+  vote                                       vote[]
+  votingdecision                             votingdecision[]
+  highestbidder                              marketplaceoffer[]           @relation("highestbidder")
+  marketplacebid                             marketplacebid[]
+
+  @@index([email], map: "User_email_idx")
+  @@index([role], map: "User_role_idx")
+  @@index([status], map: "User_status_idx")
+}
+
+model usercooperativerole {
+  id              String          @id
+  userId          String
+  roleId          String
+  createdAt       DateTime        @default(now())
+  createdBy       String?
+  cooperativerole cooperativerole @relation(fields: [roleId], references: [id], onDelete: Cascade, map: "UserCooperativeRole_roleId_fkey")
+  user            user            @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserCooperativeRole_userId_fkey")
+
+  @@unique([userId, roleId], map: "UserCooperativeRole_userId_roleId_key")
+  @@index([createdAt], map: "UserCooperativeRole_createdAt_idx")
+  @@index([roleId], map: "UserCooperativeRole_roleId_idx")
+  @@index([userId], map: "UserCooperativeRole_userId_idx")
+}
+
+model userpermission {
+  id        String   @id
+  userId    String
+  key       String
+  createdAt DateTime @default(now())
+  createdBy String?
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserPermission_userId_fkey")
+
+  @@unique([userId, key], map: "UserPermission_userId_key_key")
+  @@index([createdAt], map: "UserPermission_createdAt_idx")
+  @@index([key], map: "UserPermission_key_idx")
+  @@index([userId], map: "UserPermission_userId_idx")
+}
+
+model userprofiledocument {
+  id                String                   @id @default(uuid())
+  userId            String
+  type              userprofiledocument_type
+  fileName          String
+  fileUrl           String
+  uploadedAt        DateTime                 @default(now())
+  validUntil        DateTime?
+  validIndefinitely Boolean                  @default(false)
+  user              user                     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserProfileDocument_userId_fkey")
+
+  @@index([type], map: "UserProfileDocument_type_idx")
+  @@index([uploadedAt], map: "UserProfileDocument_uploadedAt_idx")
+  @@index([userId], map: "UserProfileDocument_userId_idx")
+}
+
+model userprofiledocumentrequest {
+  id                String                            @id @default(uuid())
+  userId            String
+  userName          String
+  type              userprofiledocumentrequest_type
+  fileName          String
+  fileUrl           String
+  createdAt         DateTime                          @default(now())
+  validUntil        DateTime?
+  validIndefinitely Boolean                           @default(false)
+  status            userprofiledocumentrequest_status @default(pending)
+  reviewedAt        DateTime?
+  reviewedBy        String?
+  rejectionReason   String?
+  user              user                              @relation(fields: [userId], references: [id], onDelete: Cascade, map: "UserProfileDocumentRequest_userId_fkey")
+
+  @@index([createdAt], map: "UserProfileDocumentRequest_createdAt_idx")
+  @@index([status], map: "UserProfileDocumentRequest_status_idx")
+  @@index([type], map: "UserProfileDocumentRequest_type_idx")
+  @@index([userId], map: "UserProfileDocumentRequest_userId_idx")
+}
+
+model vote {
+  id        String      @id
+  votingId  String
+  userId    String
+  userName  String
+  choice    vote_choice
+  createdAt DateTime    @default(now())
+  updatedAt DateTime?
+  user      user        @relation(fields: [userId], references: [id], map: "Vote_userId_fkey")
+  voting    voting      @relation(fields: [votingId], references: [id], map: "Vote_votingId_fkey")
+
+  @@unique([votingId, userId], map: "Vote_votingId_userId_key")
+  @@index([userId], map: "Vote_userId_idx")
+  @@index([votingId], map: "Vote_votingId_idx")
+}
+
+model votingdecision {
+  id          String                      @id @default(cuid())
+  votingId    String
+  title       String
+  description String?                     @db.Text
+  category    votingdecision_category
+  status      votingdecision_status       @default(draft)
+  decision    String
+  reason      String?
+  createdBy   String
+  createdAt   DateTime                    @default(now())
+  updatedAt   DateTime?                   @updatedAt
+  publishedAt DateTime?
+  approvedAt  DateTime?
+  approvedBy  String?
+  voting      voting                      @relation(fields: [votingId], references: [id], map: "VotingDecision_votingId_fkey")
+  user        user                        @relation(fields: [createdBy], references: [id], map: "VotingDecision_createdBy_fkey")
+
+  @@index([votingId], map: "VotingDecision_votingId_idx")
+  @@index([createdBy], map: "VotingDecision_createdBy_idx")
+  @@index([status], map: "VotingDecision_status_idx")
+  @@index([category], map: "VotingDecision_category_idx")
+  @@map("votingdecision")
+}
+
+model voting {
+  id                  String            @id
+  title               String
+  description         String            @db.Text
+  category            voting_category
+  status              voting_status     @default(draft)
+  createdAt           DateTime          @default(now())
+  createdBy           String
+  openedAt            DateTime?
+  closedAt            DateTime?
+  deadline            DateTime?
+  requiresQuorum      Boolean           @default(false)
+  quorumPercentage    Int?
+  result              String?
+  yesVotes            Int               @default(0)
+  noVotes             Int               @default(0)
+  abstentions         Int               @default(0)
+  totalEligibleVoters Int               @default(0)
+  vote                vote[]
+  votingdecision      votingdecision[]
+
+  @@index([category], map: "Voting_category_idx")
+  @@index([status], map: "Voting_status_idx")
+}
+
+enum financialmovement_type {
+  contribution
+  cdi_yield
+  proceeds
+  withdrawal
+  adjustment
+  refund
+  hub_credit
+}
+
+enum marketplaceoffer_type {
+  sell
+  buy
+}
+
+enum supplierdocument_type {
+  afe
+  ae
+  licenca_sanitaria
+  crt
+  questionario
+  policia_federal
+}
+
+enum supplierdocumentvaliditypolicy_type {
+  afe
+  ae
+  licenca_sanitaria
+  crt
+  questionario
+  policia_federal
+}
+
+enum offerproposal_offerType {
+  sell
+  buy
+}
+
+enum supplierdocumentvaliditypolicy_mode {
+  indefinite
+  months
+}
+
+enum userprofiledocument_type {
+  ae
+  afe
+  licenca_sanitaria
+  corpo_bombeiros
+  policia_federal
+}
+
+enum collectivepurchase_status {
+  planning
+  quotation
+  ordered
+  received
+  completed
+  cancelled
+}
+
+enum decision_category {
+  financial
+  operational
+  strategic
+  regulatory
+}
+
+enum transaction_offerType {
+  sell
+  buy
+}
+
+enum transparencynews_category {
+  financial
+  decision
+  general
+  voting
+  update
+}
+
+enum userprofiledocumentrequest_type {
+  ae
+  afe
+  licenca_sanitaria
+  corpo_bombeiros
+  policia_federal
+}
+
+enum voting_category {
+  financial
+  operational
+  strategic
+  regulatory
+}
+
+enum votingdecision_category {
+  financial
+  operational
+  strategic
+  regulatory
+}
+
+enum votingdecision_status {
+  draft
+  published
+  approved
+  rejected
+}
+
+enum decision_status {
+  draft
+  published
+  approved
+  rejected
+  implemented
+}
+
+enum flashdealclaim_deliveryType {
+  HUB
+  COOPERATIVA
+}
+
+enum strategicreserveclaim_deliveryType {
+  HUB
+  COOPERATIVA
+}
+
+enum user_role {
+  master
+  cooperado
+  padrao
+}
+
+enum vote_choice {
+  yes
+  no
+  abstain
+}
+
+enum voting_status {
+  draft
+  open
+  closed
+  approved
+  rejected
+}
+
+enum extrauserrequest_status {
+  pending
+  approved
+  rejected
+  cancelled
+}
+
+enum substancesuggestion_status {
+  pending
+  approved
+  rejected
+  cancelled
+}
+
+enum supplierqualificationrequest_status {
+  pending
+  in_progress
+  completed
+  expired
+}
+
+enum supplierrequest_status {
+  pending
+  approved
+  rejected
+  cancelled
+}
+
+enum supplierdocument_reviewStatus {
+  pending
+  approved
+  rejected
+}
+
+enum exitrequest_status {
+  pending
+  approved
+  rejected
+  cancelled
+}
+
+enum purchaseitem_status {
+  pending
+  in_collective
+  completed
+  cancelled
+}
+
+enum offerproposal_status {
+  pending
+  accepted
+  rejected
+  counter_proposed
+}
+
+enum user_status {
+  active
+  banned
+  inactive
+}
+
+enum userprofiledocumentrequest_status {
+  pending
+  approved
+  rejected
+  cancelled
+}
+
+enum marketplaceoffer_status {
+  active
+  completed
+  cancelled
+  draft
+  expired
+  paused
+}
+
+enum bankdatachangerequest_status {
+  pending
+  approved
+  rejected
+  cancelled
+}
+
+enum transaction_type {
+  MARKETPLACE
+  LIQUIDACAO
+}

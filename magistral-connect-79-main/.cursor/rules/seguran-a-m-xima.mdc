@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+
+Antes de aplicar qualquer correção no esquema do banco de dados (schema.prisma ou SQL):
+
+NÃO delete colunas ou tabelas existentes para resolver conflitos; prefira criar novas colunas ou renomear as atuais.
+
+Sempre use ALTER TABLE em vez de recriar a tabela do zero.
+
+Se a mudança puder causar perda de dados, pare e me avise antes de prosseguir.
+
+Priorize correções no código (lógica de aplicação) antes de sugerir mudanças na estrutura do MySQL.
+
+Se houver erro de tipo, sugira uma migração de dados ou um script de tratamento em vez de limpar o campo.

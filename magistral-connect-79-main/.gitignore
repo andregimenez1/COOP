@@ -1,0 +1,85 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+bun-debug.log*
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+dist
+dist-ssr
+build
+*.local
+
+# Cache
+.cache
+.parcel-cache
+.vite
+.turbo
+.next
+.nuxt
+.eslintcache
+.stylelintcache
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Archives (não versionar arquivos zip do projeto)
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Lock files (manter apenas um)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+# bun.lockb pode ser mantido se usar Bun
+
+# Coverage
+coverage
+*.lcov
+.nyc_output
+
+# Testing
+.jest
+.vitest

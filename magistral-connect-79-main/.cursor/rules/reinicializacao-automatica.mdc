@@ -1,0 +1,69 @@
+---
+description: Reinicialização automática de servidores frontend e backend
+alwaysApply: true
+---
+
+# Reinicialização Automática de Servidores
+
+## Regra Fundamental
+
+**SEMPRE reinicie automaticamente os servidores (frontend ou backend) quando necessário**, sem pedir permissão ao usuário ou sugerir que ele faça manualmente.
+
+## Quando Reiniciar Automaticamente
+
+### Backend (npm run dev na pasta backend)
+
+Reinicie automaticamente quando:
+- Adicionar ou modificar `console.log`, `console.error`, ou qualquer código de logging
+- Modificar arquivos de configuração (`.env`, `package.json`, `tsconfig.json`)
+- Adicionar ou modificar middlewares, rotas, ou controllers
+- Fazer mudanças em arquivos TypeScript no diretório `backend/src/`
+- Adicionar novos endpoints ou modificar lógica de API
+- O usuário reportar que logs não aparecem ou mudanças não estão sendo refletidas
+- Qualquer mudança que possa requerer recompilação ou recarregamento do servidor
+
+### Frontend (npm run dev na pasta raiz)
+
+Reinicie automaticamente quando:
+- Modificar arquivos de configuração (`vite.config.ts`, `package.json`, `tsconfig.json`)
+- Adicionar ou modificar variáveis de ambiente (`.env`)
+- Fazer mudanças em arquivos de build ou configuração
+- O usuário reportar que mudanças não estão sendo refletidas no navegador
+- Adicionar novos pacotes ou dependências
+
+## Como Reiniciar
+
+### Backend
+
+```bash
+# Parar processo existente (se houver)
+# Depois executar:
+cd backend
+npm run dev
+```
+
+### Frontend
+
+```bash
+# Parar processo existente (se houver)
+# Depois executar:
+npm run dev
+```
+
+## Comportamento Esperado
+
+1. **Detectar necessidade**: Identifique quando uma mudança requer reinicialização
+2. **Reiniciar automaticamente**: Execute os comandos de reinicialização sem perguntar
+3. **Informar o usuário**: Após reiniciar, informe brevemente: "Backend reiniciado automaticamente" ou "Frontend reiniciado automaticamente"
+4. **Não interromper**: Continue com a tarefa original após reiniciar
+
+## Exceções
+
+**NÃO reinicie** se:
+- O servidor já está rodando e a mudança é apenas em código que o hot-reload cobre (ex: mudanças em componentes React, mudanças em arquivos `.tsx` que não afetam configuração)
+- O usuário explicitamente pedir para não reiniciar
+- A mudança for apenas em arquivos de documentação (`.md`)
+
+## Prioridade
+
+Esta regra tem **ALTA PRIORIDADE**. Sempre prefira reiniciar automaticamente quando houver dúvida, em vez de pedir ao usuário para fazer manualmente.

@@ -1,0 +1,430 @@
+﻿prisma/scripts/reset-natural-user.ts(29,14): error TS2551: Property 'substanceSuggestion' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'substancesuggestion'?
+prisma/scripts/reset-natural-user.ts(30,14): error TS2551: Property 'supplierRequest' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'supplierrequest'?
+prisma/scripts/reset-natural-user.ts(32,14): error TS2551: Property 'purchaseItem' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'purchaseitem'?
+prisma/scripts/reset-natural-user.ts(34,14): error TS2551: Property 'financialMovement' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'financialmovement'?
+prisma/scripts/reset-natural-user.ts(35,14): error TS2551: Property 'bankDataChangeRequest' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'bankdatachangerequest'?
+prisma/scripts/reset-natural-user.ts(36,14): error TS2551: Property 'extraUserRequest' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'extrauserrequest'?
+prisma/scripts/reset-natural-user.ts(37,14): error TS2551: Property 'exitRequest' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'exitrequest'?
+prisma/scripts/reset-natural-user.ts(39,14): error TS2551: Property 'offerProposal' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'offerproposal'?
+prisma/scripts/reset-natural-user.ts(43,14): error TS2551: Property 'marketplaceOffer' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'marketplaceoffer'?
+prisma/scripts/reset-natural-user.ts(44,14): error TS2551: Property 'rawMaterial' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'rawmaterial'?
+prisma/scripts/reset-natural-user.ts(48,16): error TS2551: Property 'supplierQualificationRequest' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'supplierqualificationrequest'?
+prisma/scripts/reset-natural-user.ts(49,16): error TS2551: Property 'supplierQualification' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'supplierqualification'?
+prisma/scripts/reset-natural-user.ts(53,14): error TS2551: Property 'transparencyNews' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'transparencynews'?
+prisma/scripts/reset-natural-user.ts(57,14): error TS2551: Property 'transparencyNews' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'transparencynews'?
+prisma/scripts/reset-natural-user.ts(60,14): error TS2551: Property 'inventoryItem' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'inventoryitem'?
+prisma/scripts/reset-natural-user.ts(65,14): error TS2551: Property 'flashDealClaim' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'flashdealclaim'?
+prisma/scripts/reset-natural-user.ts(68,14): error TS2551: Property 'strategicReserveClaim' does not exist on type 'Omit<PrismaClient<PrismaClientOptions, never, DefaultArgs>, "$connect" | "$disconnect" | "$on" | "$transaction" | "$extends">'. Did you mean 'strategicreserveclaim'?
+prisma/scripts/update-user-role.ts(23,13): error TS2322: Type 'string' is not assignable to type 'user_role | Enumuser_roleFieldUpdateOperationsInput | undefined'.
+prisma/seed-transparency-news.ts(33,33): error TS2551: Property 'transparencyNews' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'transparencynews'?
+prisma/seed-transparency-news.ts(40,16): error TS2551: Property 'transparencyNews' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'transparencynews'?
+prisma/seed.ts(110,18): error TS2551: Property 'transparencyNews' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'transparencynews'?
+src/controllers/financial.controller.ts(39,7): error TS2322: Type '{ type: "hub_credit"; userId: string; userName: string; amount: number; description: string; createdBy: string; }' is not assignable to type '(Without<financialmovementCreateInput, financialmovementUncheckedCreateInput> & financialmovementUncheckedCreateInput) | (Without<...> & financialmovementCreateInput)'.
+  Type '{ type: "hub_credit"; userId: string; userName: string; amount: number; description: string; createdBy: string; }' is not assignable to type 'Without<financialmovementCreateInput, financialmovementUncheckedCreateInput> & financialmovementUncheckedCreateInput'.
+    Property 'id' is missing in type '{ type: "hub_credit"; userId: string; userName: string; amount: number; description: string; createdBy: string; }' but required in type 'financialmovementUncheckedCreateInput'.
+src/controllers/financial.controller.ts(86,7): error TS2322: Type '{ type: any; userId: any; userName: any; amount: number; description: any; relatedItemId: any; createdBy: string; }' is not assignable to type '(Without<financialmovementCreateInput, financialmovementUncheckedCreateInput> & financialmovementUncheckedCreateInput) | (Without<...> & financialmovementCreateInput)'.
+  Type '{ type: any; userId: any; userName: any; amount: number; description: any; relatedItemId: any; createdBy: string; }' is not assignable to type 'Without<financialmovementCreateInput, financialmovementUncheckedCreateInput> & financialmovementUncheckedCreateInput'.
+    Property 'id' is missing in type '{ type: any; userId: any; userName: any; amount: number; description: any; relatedItemId: any; createdBy: string; }' but required in type 'financialmovementUncheckedCreateInput'.
+src/controllers/follow.controller.ts(14,35): error TS2551: Property 'followedSubstance' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'followedsubstance'?
+src/controllers/follow.controller.ts(30,33): error TS2551: Property 'followedSubstance' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'followedsubstance'?
+src/controllers/follow.controller.ts(56,18): error TS2551: Property 'followedSubstance' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'followedsubstance'?
+src/controllers/follow.controller.ts(74,35): error TS2551: Property 'followedUser' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'followeduser'?
+src/controllers/follow.controller.ts(98,33): error TS2551: Property 'followedUser' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'followeduser'?
+src/controllers/follow.controller.ts(121,18): error TS2551: Property 'followedUser' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'followeduser'?
+src/controllers/marketplace.controller.ts(69,23): error TS7030: Not all code paths return a value.
+src/controllers/marketplace.controller.ts(144,36): error TS6133: 'req' is declared but its value is never read.
+src/controllers/marketplace.controller.ts(175,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(205,7): error TS2322: Type '{ substanceId: string; targetStock: number; unit: string; }' is not assignable to type '(Without<productCreateInput, productUncheckedCreateInput> & productUncheckedCreateInput) | (Without<...> & productCreateInput)'.
+  Type '{ substanceId: string; targetStock: number; unit: string; }' is not assignable to type 'Without<productCreateInput, productUncheckedCreateInput> & productUncheckedCreateInput'.
+    Property 'updatedAt' is missing in type '{ substanceId: string; targetStock: number; unit: string; }' but required in type 'productUncheckedCreateInput'.
+src/controllers/marketplace.controller.ts(291,7): error TS2322: Type '{ substanceId: string; rawMaterialId: string | undefined; batch: string | undefined; ownerId: string; holderId: string; quantity: number; unit: string; expirationDate: Date; isExcess: boolean; }' is not assignable to type '(Without<inventoryitemCreateInput, inventoryitemUncheckedCreateInput> & inventoryitemUncheckedCreateInput) | (Without<...> & inventoryitemCreateInput)'.
+  Type '{ substanceId: string; rawMaterialId: string | undefined; batch: string | undefined; ownerId: string; holderId: string; quantity: number; unit: string; expirationDate: Date; isExcess: boolean; }' is not assignable to type 'Without<inventoryitemCreateInput, inventoryitemUncheckedCreateInput> & inventoryitemUncheckedCreateInput'.
+    Type '{ substanceId: string; rawMaterialId: string | undefined; batch: string | undefined; ownerId: string; holderId: string; quantity: number; unit: string; expirationDate: Date; isExcess: boolean; }' is missing the following properties from type 'inventoryitemUncheckedCreateInput': id, updatedAt
+src/controllers/marketplace.controller.ts(322,67): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(330,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(392,42): error TS6133: 'req' is declared but its value is never read.
+src/controllers/marketplace.controller.ts(413,34): error TS6133: 'req' is declared but its value is never read.
+src/controllers/marketplace.controller.ts(431,23): error TS7030: Not all code paths return a value.
+src/controllers/marketplace.controller.ts(504,7): error TS2322: Type '{ type: any; rawMaterialId: any; rawMaterialName: any; substanceId: any; substanceName: any; quantity: number; unit: string; pricePerUnit: number; expiryDate: Date | null; maxPrice: number | null; ... 10 more ...; bidCount: number | null; }' is not assignable to type '(Without<marketplaceofferCreateInput, marketplaceofferUncheckedCreateInput> & marketplaceofferUncheckedCreateInput) | (Without<...> & marketplaceofferCreateInput)'.
+  Type '{ type: any; rawMaterialId: any; rawMaterialName: any; substanceId: any; substanceName: any; quantity: number; unit: string; pricePerUnit: number; expiryDate: Date | null; maxPrice: number | null; ... 10 more ...; bidCount: number | null; }' is not assignable to type 'Without<marketplaceofferCreateInput, marketplaceofferUncheckedCreateInput> & marketplaceofferUncheckedCreateInput'.
+    Property 'id' is missing in type '{ type: any; rawMaterialId: any; rawMaterialName: any; substanceId: any; substanceName: any; quantity: number; unit: string; pricePerUnit: number; expiryDate: Date | null; maxPrice: number | null; ... 10 more ...; bidCount: number | null; }' but required in type 'marketplaceofferUncheckedCreateInput'.
+src/controllers/marketplace.controller.ts(518,29): error TS2339: Property 'name' does not exist on type '{ id: string; email: string; role: string; }'.
+src/controllers/marketplace.controller.ts(519,32): error TS2339: Property 'company' does not exist on type '{ id: string; email: string; role: string; }'.
+src/controllers/marketplace.controller.ts(539,23): error TS7030: Not all code paths return a value.
+src/controllers/marketplace.controller.ts(551,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(562,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(571,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(581,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(595,11): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(627,74): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(637,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(664,74): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(671,53): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(725,7): error TS2322: Type '{ offerId: any; offerType: any; proposerId: string; proposerName: any; proposerCompany: any; quantity: number; unit: any; productExpiryDate: Date | null; status: "pending"; laudoId: any; ... 8 more ...; tradeLaudoId: any; }' is not assignable to type '(Without<offerproposalCreateInput, offerproposalUncheckedCreateInput> & offerproposalUncheckedCreateInput) | (Without<...> & offerproposalCreateInput)'.
+  Type '{ offerId: any; offerType: any; proposerId: string; proposerName: any; proposerCompany: any; quantity: number; unit: any; productExpiryDate: Date | null; status: "pending"; laudoId: any; ... 8 more ...; tradeLaudoId: any; }' is not assignable to type 'Without<offerproposalCreateInput, offerproposalUncheckedCreateInput> & offerproposalUncheckedCreateInput'.
+    Property 'id' is missing in type '{ offerId: any; offerType: any; proposerId: string; proposerName: any; proposerCompany: any; quantity: number; unit: any; productExpiryDate: Date | null; status: "pending"; laudoId: any; ... 8 more ...; tradeLaudoId: any; }' but required in type 'offerproposalUncheckedCreateInput'.
+src/controllers/marketplace.controller.ts(729,33): error TS2339: Property 'name' does not exist on type '{ id: string; email: string; role: string; }'.
+src/controllers/marketplace.controller.ts(730,36): error TS2339: Property 'company' does not exist on type '{ id: string; email: string; role: string; }'.
+src/controllers/marketplace.controller.ts(760,11): error TS6133: 'userId' is declared but its value is never read.
+src/controllers/marketplace.controller.ts(765,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(775,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/marketplace.controller.ts(840,7): error TS2322: Type '{ type: any; proposalId: any; offerId: any; offerType: any; substanceId: any; substanceName: any; quantity: number; unit: any; pricePerUnit: number | null; totalPrice: number | null; sellerId: any; ... 6 more ...; completedAt: Date; }' is not assignable to type '(Without<transactionCreateInput, transactionUncheckedCreateInput> & transactionUncheckedCreateInput) | (Without<...> & transactionCreateInput)'.
+  Type '{ type: any; proposalId: any; offerId: any; offerType: any; substanceId: any; substanceName: any; quantity: number; unit: any; pricePerUnit: number | null; totalPrice: number | null; sellerId: any; ... 6 more ...; completedAt: Date; }' is not assignable to type 'Without<transactionUncheckedCreateInput, transactionCreateInput> & transactionCreateInput'.
+    Type '{ type: any; proposalId: any; offerId: any; offerType: any; substanceId: any; substanceName: any; quantity: number; unit: any; pricePerUnit: number | null; totalPrice: number | null; sellerId: any; ... 6 more ...; completedAt: Date; }' is missing the following properties from type 'transactionCreateInput': id, user_transaction_buyerIdTouser, user_transaction_sellerIdTouser
+src/controllers/notification.controller.ts(33,23): error TS7030: Not all code paths return a value.
+src/controllers/notification.controller.ts(104,11): error TS6133: 'updated' is declared but its value is never read.
+src/controllers/notification.controller.ts(105,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"notification"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"notification"> | undefined'.
+src/controllers/notification.controller.ts(120,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"notification"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"notification"> | undefined'.
+src/controllers/notification.controller.ts(133,7): error TS2322: Type '{ userId: any; type: any; title: any; message: any; relatedItemId: any; }' is not assignable to type '(Without<notificationCreateInput, notificationUncheckedCreateInput> & notificationUncheckedCreateInput) | (Without<...> & notificationCreateInput)'.
+  Type '{ userId: any; type: any; title: any; message: any; relatedItemId: any; }' is not assignable to type 'Without<notificationUncheckedCreateInput, notificationCreateInput> & notificationCreateInput'.
+    Type '{ userId: any; type: any; title: any; message: any; relatedItemId: any; }' is missing the following properties from type 'notificationCreateInput': id, user
+src/controllers/rawMaterial.controller.ts(14,39): error TS2551: Property 'rawMaterial' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'rawmaterial'?
+src/controllers/rawMaterial.controller.ts(48,38): error TS2551: Property 'rawMaterial' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'rawmaterial'?
+src/controllers/rawMaterial.controller.ts(81,35): error TS2551: Property 'rawMaterial' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'rawmaterial'?
+src/controllers/rawMaterial.controller.ts(95,34): error TS2551: Property 'rawMaterial' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'rawmaterial'?
+src/controllers/rawMaterial.controller.ts(114,35): error TS2551: Property 'rawMaterial' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'rawmaterial'?
+src/controllers/rawMaterial.controller.ts(121,18): error TS2551: Property 'rawMaterial' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'rawmaterial'?
+src/controllers/request.controller.ts(1,10): error TS6133: 'Request' is declared but its value is never read.
+src/controllers/request.controller.ts(128,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(194,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(223,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(235,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(322,83): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(340,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(365,83): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(370,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(459,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(474,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(503,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(515,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(610,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(640,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(669,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(681,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(840,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(860,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(890,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(902,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(995,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(1015,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(1037,11): error TS6133: 'reviewedBy' is declared but its value is never read.
+src/controllers/request.controller.ts(1044,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/request.controller.ts(1056,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/roles.controller.ts(28,33): error TS6133: 'req' is declared but its value is never read.
+src/controllers/roles.controller.ts(30,32): error TS2551: Property 'cooperativeRole' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'cooperativerole'?
+src/controllers/roles.controller.ts(44,25): error TS7006: Parameter 'r' implicitly has an 'any' type.
+src/controllers/roles.controller.ts(46,44): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/controllers/roles.controller.ts(47,31): error TS7006: Parameter 'u' implicitly has an 'any' type.
+src/controllers/roles.controller.ts(64,31): error TS2551: Property 'cooperativeRole' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'cooperativerole'?
+src/controllers/roles.controller.ts(95,31): error TS2551: Property 'cooperativeRole' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'cooperativerole'?
+src/controllers/roles.controller.ts(116,18): error TS2551: Property 'cooperativeRole' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'cooperativerole'?
+src/controllers/roles.controller.ts(137,31): error TS2551: Property 'cooperativeRole' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'cooperativerole'?
+src/controllers/roles.controller.ts(141,20): error TS2551: Property 'cooperativeRolePermission' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'cooperativerolepermission'?
+src/controllers/roles.controller.ts(147,20): error TS2551: Property 'cooperativeRolePermission' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'cooperativerolepermission'?
+src/controllers/roles.controller.ts(150,32): error TS2551: Property 'cooperativeRolePermission' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'cooperativerolepermission'?
+src/controllers/roles.controller.ts(155,55): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/controllers/roles.controller.ts(171,14): error TS2551: Property 'cooperativeRole' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'cooperativerole'?
+src/controllers/roles.controller.ts(183,18): error TS2551: Property 'userCooperativeRole' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'usercooperativerole'?
+src/controllers/roles.controller.ts(198,18): error TS2551: Property 'userCooperativeRole' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'usercooperativerole'?
+src/controllers/settings.controller.ts(2,24): error TS2305: Module '"@prisma/client"' has no exported member 'DocumentType'.
+src/controllers/settings.controller.ts(2,38): error TS2724: '"@prisma/client"' has no exported member named 'SupplierDocValidityPolicyMode'. Did you mean 'supplierdocumentvaliditypolicy_mode'?
+src/controllers/settings.controller.ts(24,3): error TS6133: 'req' is declared but its value is never read.
+src/controllers/settings.controller.ts(100,44): error TS6133: 'req' is declared but its value is never read.
+src/controllers/substance.controller.ts(1,10): error TS6133: 'Request' is declared but its value is never read.
+src/controllers/substance.controller.ts(49,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/substance.controller.ts(96,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/substance.controller.ts(111,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/substance.controller.ts(139,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/supplier.controller.ts(1,10): error TS6133: 'Request' is declared but its value is never read.
+src/controllers/supplier.controller.ts(51,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/supplier.controller.ts(106,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/supplier.controller.ts(118,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/supplier.controller.ts(143,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/supplier.controller.ts(155,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/supplierQualification.controller.ts(63,56): error TS6133: 'userId' is declared but its value is never read.
+src/controllers/supplierQualification.controller.ts(93,10): error TS6133: 'getLatestValidityByType' is declared but its value is never read.
+src/controllers/supplierQualification.controller.ts(124,51): error TS7030: Not all code paths return a value.
+src/controllers/supplierQualification.controller.ts(210,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/supplierQualification.controller.ts(260,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/supplierQualification.controller.ts(265,44): error TS2339: Property 'supplierdocument' does not exist on type '{ year: number; id: string; status: supplierqualificationrequest_status; supplierId: string; supplierName: string; completedAt: Date | null; ... 5 more ...; awaitingAdminReview: boolean; }'.
+src/controllers/supplierQualification.controller.ts(265,66): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(358,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/supplierQualification.controller.ts(364,42): error TS2339: Property 'supplierdocument' does not exist on type '{ year: number; id: string; status: supplierqualificationrequest_status; supplierId: string; supplierName: string; completedAt: Date | null; ... 5 more ...; awaitingAdminReview: boolean; }'.
+src/controllers/supplierQualification.controller.ts(364,64): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(374,11): error TS6133: 'allApproved' is declared but its value is never read.
+src/controllers/supplierQualification.controller.ts(374,33): error TS2339: Property 'supplierdocument' does not exist on type '{ year: number; id: string; status: supplierqualificationrequest_status; supplierId: string; supplierName: string; completedAt: Date | null; ... 5 more ...; awaitingAdminReview: boolean; }'.
+src/controllers/supplierQualification.controller.ts(374,57): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(375,43): error TS2339: Property 'supplierdocument' does not exist on type '{ year: number; id: string; status: supplierqualificationrequest_status; supplierId: string; supplierName: string; completedAt: Date | null; ... 5 more ...; awaitingAdminReview: boolean; }'.
+src/controllers/supplierQualification.controller.ts(375,132): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(384,26): error TS2304: Cannot find name 'approvedDocs'.
+src/controllers/supplierQualification.controller.ts(384,47): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(385,41): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(388,15): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(389,18): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(390,16): error TS7006: Parameter 'a' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(390,19): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/controllers/supplierQualification.controller.ts(401,30): error TS2339: Property 'supplierdocument' does not exist on type '{ year: number; id: string; status: supplierqualificationrequest_status; supplierId: string; supplierName: string; completedAt: Date | null; ... 5 more ...; awaitingAdminReview: boolean; }'.
+src/controllers/transparency.controller.ts(51,7): error TS2322: Type '{ title: any; content: any; category: any; relatedItemId: any; createdBy: string; status: string; }' is not assignable to type '(Without<transparencynewsCreateInput, transparencynewsUncheckedCreateInput> & transparencynewsUncheckedCreateInput) | (Without<...> & transparencynewsCreateInput)'.
+  Type '{ title: any; content: any; category: any; relatedItemId: any; createdBy: string; status: string; }' is not assignable to type 'Without<transparencynewsUncheckedCreateInput, transparencynewsCreateInput> & transparencynewsCreateInput'.
+    Property 'id' is missing in type '{ title: any; content: any; category: any; relatedItemId: any; createdBy: string; status: string; }' but required in type 'transparencynewsCreateInput'.
+src/controllers/transparency.controller.ts(78,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/transparency.controller.ts(104,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/transparency.controller.ts(128,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/transparency.controller.ts(139,3): error TS6133: 'req' is declared but its value is never read.
+src/controllers/transparency.controller.ts(171,9): error TS2353: Object literal may only specify known properties, and 'options' does not exist in type '(Without<votingCreateInput, votingUncheckedCreateInput> & votingUncheckedCreateInput) | (Without<...> & votingCreateInput)'.
+src/controllers/transparency.controller.ts(194,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/transparency.controller.ts(198,9): error TS2353: Object literal may only specify known properties, and 'options' does not exist in type '(Without<votingUpdateInput, votingUncheckedUpdateInput> & votingUncheckedUpdateInput) | (Without<...> & votingUpdateInput)'.
+src/controllers/transparency.controller.ts(224,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/transparency.controller.ts(231,16): error TS2339: Property 'endsAt' does not exist on type '{ id: string; status: voting_status; createdAt: Date; result: string | null; createdBy: string; title: string; deadline: Date | null; description: string; category: voting_category; ... 7 more ...; totalEligibleVoters: number; }'.
+src/controllers/transparency.controller.ts(231,46): error TS2339: Property 'endsAt' does not exist on type '{ id: string; status: voting_status; createdAt: Date; result: string | null; createdBy: string; title: string; deadline: Date | null; description: string; category: voting_category; ... 7 more ...; totalEligibleVoters: number; }'.
+src/controllers/transparency.controller.ts(238,11): error TS2322: Type 'string | string[]' is not assignable to type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/transparency.controller.ts(250,9): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/transparency.controller.ts(264,3): error TS6133: 'req' is declared but its value is never read.
+src/controllers/transparency.controller.ts(300,17): error TS2339: Property 'endsAt' does not exist on type '{ id: string; status: voting_status; createdAt: Date; result: string | null; createdBy: string; title: string; deadline: Date | null; description: string; category: voting_category; ... 7 more ...; totalEligibleVoters: number; }'.
+src/controllers/transparency.controller.ts(300,48): error TS2339: Property 'endsAt' does not exist on type '{ id: string; status: voting_status; createdAt: Date; result: string | null; createdBy: string; title: string; deadline: Date | null; description: string; category: voting_category; ... 7 more ...; totalEligibleVoters: number; }'.
+src/controllers/transparency.controller.ts(305,7): error TS2322: Type '{ votingId: any; decision: any; reason: any; createdBy: string; }' is not assignable to type '(Without<votingdecisionCreateInput, votingdecisionUncheckedCreateInput> & votingdecisionUncheckedCreateInput) | (Without<...> & votingdecisionCreateInput)'.
+  Type '{ votingId: any; decision: any; reason: any; createdBy: string; }' is not assignable to type 'Without<votingdecisionCreateInput, votingdecisionUncheckedCreateInput> & votingdecisionUncheckedCreateInput'.
+    Type '{ votingId: any; decision: any; reason: any; createdBy: string; }' is missing the following properties from type 'votingdecisionUncheckedCreateInput': title, category
+src/controllers/transparency.controller.ts(330,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/transparency.controller.ts(353,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(1,10): error TS6133: 'Request' is declared but its value is never read.
+src/controllers/user.controller.ts(2,24): error TS6133: 'Prisma' is declared but its value is never read.
+src/controllers/user.controller.ts(122,3): error TS6133: 'req' is declared but its value is never read.
+src/controllers/user.controller.ts(160,71): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(165,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(181,71): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(189,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(205,71): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(319,11): error TS2322: Type 'string' is not assignable to type 'user_role | undefined'.
+src/controllers/user.controller.ts(324,11): error TS2322: Type 'string' is not assignable to type 'user_status | undefined'.
+src/controllers/user.controller.ts(341,49): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(367,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(439,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(479,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(521,51): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"notification"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"notification"> | undefined'.
+src/controllers/user.controller.ts(522,58): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"substancesuggestion"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"substancesuggestion"> | undefined'.
+src/controllers/user.controller.ts(523,54): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"supplierrequest"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"supplierrequest"> | undefined'.
+src/controllers/user.controller.ts(524,43): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"vote"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"vote"> | undefined'.
+src/controllers/user.controller.ts(525,51): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"purchaseitem"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"purchaseitem"> | undefined'.
+src/controllers/user.controller.ts(526,48): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"quotation"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"quotation"> | undefined'.
+src/controllers/user.controller.ts(527,56): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"financialmovement"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"financialmovement"> | undefined'.
+src/controllers/user.controller.ts(528,60): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"bankdatachangerequest"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"bankdatachangerequest"> | undefined'.
+src/controllers/user.controller.ts(529,55): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"extrauserrequest"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"extrauserrequest"> | undefined'.
+src/controllers/user.controller.ts(530,50): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"exitrequest"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"exitrequest"> | undefined'.
+src/controllers/user.controller.ts(532,52): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"offerproposal"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"offerproposal"> | undefined'.
+src/controllers/user.controller.ts(534,25): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"transaction"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"transaction"> | undefined'.
+src/controllers/user.controller.ts(534,43): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"transaction"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"transaction"> | undefined'.
+src/controllers/user.controller.ts(536,55): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"marketplaceoffer"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"marketplaceoffer"> | undefined'.
+src/controllers/user.controller.ts(537,50): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"rawmaterial"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"rawmaterial"> | undefined'.
+src/controllers/user.controller.ts(539,66): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"supplier"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"supplier"> | undefined'.
+src/controllers/user.controller.ts(544,47): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"supplier"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"supplier"> | undefined'.
+src/controllers/user.controller.ts(548,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringNullableFilter<"transparencynews"> | null | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringNullableFilter<"transparencynews"> | null | undefined'.
+src/controllers/user.controller.ts(551,55): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"transparencynews"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"transparencynews"> | undefined'.
+src/controllers/user.controller.ts(555,25): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"inventoryitem"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"inventoryitem"> | undefined'.
+src/controllers/user.controller.ts(555,42): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"inventoryitem"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"inventoryitem"> | undefined'.
+src/controllers/user.controller.ts(559,53): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"flashdealclaim"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"flashdealclaim"> | undefined'.
+src/controllers/user.controller.ts(562,60): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"strategicreserveclaim"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"strategicreserveclaim"> | undefined'.
+src/controllers/user.controller.ts(668,39): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(673,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(698,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(720,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(750,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(946,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(971,33): error TS7030: Not all code paths return a value.
+src/controllers/user.controller.ts(989,19): error TS2353: Object literal may only specify known properties, and 'role' does not exist in type 'usercooperativeroleSelect<DefaultArgs>'.
+src/controllers/user.controller.ts(995,34): error TS2339: Property 'role' does not exist on type '{ id: string; createdAt: Date; userId: string; createdBy: string | null; roleId: string; }'.
+src/controllers/user.controller.ts(995,60): error TS7006: Parameter 'p' implicitly has an 'any' type.
+src/controllers/user.controller.ts(1007,60): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(1011,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"userpermission"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"userpermission"> | undefined'.
+src/controllers/user.controller.ts(1022,45): error TS6133: 'req' is declared but its value is never read.
+src/controllers/user.controller.ts(1052,60): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(1059,32): error TS2322: Type 'string | string[]' is not assignable to type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(1060,19): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/user.controller.ts(1064,57): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"userpermission"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"userpermission"> | undefined'.
+src/controllers/user.controller.ts(1068,16): error TS2322: Type 'string | string[]' is not assignable to type 'string | StringFilter<"userpermission"> | undefined'.
+  Type 'string[]' is not assignable to type 'string | StringFilter<"userpermission"> | undefined'.
+src/controllers/userEligibility.controller.ts(84,38): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/userProfileDocuments.controller.ts(2,24): error TS2724: '"@prisma/client"' has no exported member named 'UserProfileDocumentType'. Did you mean 'userprofiledocument_type'?
+src/controllers/vantagens.controller.ts(14,10): error TS2305: Module '"@prisma/client"' has no exported member 'DeliveryType'.
+src/controllers/vantagens.controller.ts(50,3): error TS6133: 'req' is declared but its value is never read.
+src/controllers/vantagens.controller.ts(76,49): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/vantagens.controller.ts(141,56): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/votingDecisionController.ts(57,9): error TS7030: Not all code paths return a value.
+src/controllers/votingDecisionController.ts(62,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/votingDecisionController.ts(86,9): error TS7030: Not all code paths return a value.
+src/controllers/votingDecisionController.ts(88,26): error TS2339: Property 'user' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+src/controllers/votingDecisionController.ts(130,9): error TS7030: Not all code paths return a value.
+src/controllers/votingDecisionController.ts(133,26): error TS2339: Property 'user' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+src/controllers/votingDecisionController.ts(138,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/votingDecisionController.ts(151,14): error TS2339: Property 'approvedAt' does not exist on type '{ status?: "approved" | "rejected" | "draft" | "published" | "implemented" | undefined; reason?: string | undefined; decision?: string | undefined; title?: string | undefined; description?: string | undefined; category?: "financial" | ... 3 more ... | undefined; }'.
+src/controllers/votingDecisionController.ts(152,14): error TS2339: Property 'approvedBy' does not exist on type '{ status?: "approved" | "rejected" | "draft" | "published" | "implemented" | undefined; reason?: string | undefined; decision?: string | undefined; title?: string | undefined; description?: string | undefined; category?: "financial" | ... 3 more ... | undefined; }'.
+src/controllers/votingDecisionController.ts(156,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/votingDecisionController.ts(157,9): error TS2322: Type '{ status?: "approved" | "rejected" | "draft" | "published" | "implemented" | undefined; reason?: string | undefined; decision?: string | undefined; title?: string | undefined; description?: string | undefined; category?: "financial" | ... 3 more ... | undefined; }' is not assignable to type '(Without<votingdecisionUpdateInput, votingdecisionUncheckedUpdateInput> & votingdecisionUncheckedUpdateInput) | (Without<...> & votingdecisionUpdateInput)'.
+  Type '{ status?: "approved" | "rejected" | "draft" | "published" | "implemented" | undefined; reason?: string | undefined; decision?: string | undefined; title?: string | undefined; description?: string | undefined; category?: "financial" | ... 3 more ... | undefined; }' is not assignable to type 'Without<votingdecisionUncheckedUpdateInput, votingdecisionUpdateInput> & votingdecisionUpdateInput'.
+    Types of property 'status' are incompatible.
+      Type '"approved" | "rejected" | "draft" | "published" | "implemented" | undefined' is not assignable to type 'votingdecision_status | Enumvotingdecision_statusFieldUpdateOperationsInput | undefined'.
+        Type '"implemented"' is not assignable to type 'votingdecision_status | Enumvotingdecision_statusFieldUpdateOperationsInput | undefined'.
+src/controllers/votingDecisionController.ts(183,9): error TS7030: Not all code paths return a value.
+src/controllers/votingDecisionController.ts(186,26): error TS2339: Property 'user' does not exist on type 'Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>'.
+src/controllers/votingDecisionController.ts(190,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/controllers/votingDecisionController.ts(207,18): error TS2322: Type 'string | string[]' is not assignable to type 'string | undefined'.
+  Type 'string[]' is not assignable to type 'string'.
+src/middleware/auth.middleware.ts(18,3): error TS6133: 'res' is declared but its value is never read.
+src/middleware/auth.middleware.ts(60,29): error TS6133: 'res' is declared but its value is never read.
+src/middleware/auth.middleware.ts(76,3): error TS6133: 'res' is declared but its value is never read.
+src/middleware/errorHandler.ts(17,3): error TS6133: 'req' is declared but its value is never read.
+src/middleware/errorHandler.ts(19,3): error TS6133: 'next' is declared but its value is never read.
+src/routes/file.routes.ts(7,54): error TS7030: Not all code paths return a value.
+src/routes/marketplace.routes.ts(44,43): error TS2304: Cannot find name 'placeBid'.
+src/routes/quotation.routes.ts(10,41): error TS6133: 'req' is declared but its value is never read.
+src/server.ts(79,21): error TS6133: 'req' is declared but its value is never read.
+src/server.ts(106,15): error TS6133: 'req' is declared but its value is never read.
+src/server.ts(110,12): error TS2769: No overload matches this call.
+  Overload 1 of 6, '(port: number, hostname: string, backlog: number, callback?: ((error?: Error | undefined) => void) | undefined): Server<typeof IncomingMessage, typeof ServerResponse>', gave the following error.
+    Argument of type 'string | 3001' is not assignable to parameter of type 'number'.
+      Type 'string' is not assignable to type 'number'.
+  Overload 2 of 6, '(port: number, hostname: string, callback?: ((error?: Error | undefined) => void) | undefined): Server<typeof IncomingMessage, typeof ServerResponse>', gave the following error.
+    Argument of type 'string | 3001' is not assignable to parameter of type 'number'.
+      Type 'string' is not assignable to type 'number'.
+src/services/EmailService.ts(73,3): error TS6133: 'flashDealId' is declared but its value is never read.
+src/services/marketplace.service.ts(1,24): error TS2724: '"@prisma/client"' has no exported member named 'TransactionType'. Did you mean 'transaction_type'?
+src/services/marketplace.service.ts(1,24): error TS6133: 'TransactionType' is declared but its value is never read.
+src/services/marketplace.service.ts(76,7): error TS2322: Type '{ type: "MARKETPLACE"; substanceId: string; substanceName: string; quantity: number; unit: string; pricePerUnit: number; totalPrice: number; sellerId: string; sellerName: string; buyerId: string; buyerName: string; }' is not assignable to type '(Without<transactionCreateInput, transactionUncheckedCreateInput> & transactionUncheckedCreateInput) | (Without<...> & transactionCreateInput)'.
+  Type '{ type: "MARKETPLACE"; substanceId: string; substanceName: string; quantity: number; unit: string; pricePerUnit: number; totalPrice: number; sellerId: string; sellerName: string; buyerId: string; buyerName: string; }' is not assignable to type 'Without<transactionCreateInput, transactionUncheckedCreateInput> & transactionUncheckedCreateInput'.
+    Property 'id' is missing in type '{ type: "MARKETPLACE"; substanceId: string; substanceName: string; quantity: number; unit: string; pricePerUnit: number; totalPrice: number; sellerId: string; sellerName: string; buyerId: string; buyerName: string; }' but required in type 'transactionUncheckedCreateInput'.
+src/services/marketplace.service.ts(125,9): error TS6133: 'totalPrice' is declared but its value is never read.
+src/services/marketplace.service.ts(143,7): error TS2322: Type '{ type: "LIQUIDACAO"; substanceId: string; substanceName: string; quantity: number; unit: string; pricePerUnit: number; totalPrice: number; sellerId: string; sellerName: string; buyerId: string; buyerName: string; }' is not assignable to type '(Without<transactionCreateInput, transactionUncheckedCreateInput> & transactionUncheckedCreateInput) | (Without<...> & transactionCreateInput)'.
+  Type '{ type: "LIQUIDACAO"; substanceId: string; substanceName: string; quantity: number; unit: string; pricePerUnit: number; totalPrice: number; sellerId: string; sellerName: string; buyerId: string; buyerName: string; }' is not assignable to type 'Without<transactionCreateInput, transactionUncheckedCreateInput> & transactionUncheckedCreateInput'.
+    Property 'id' is missing in type '{ type: "LIQUIDACAO"; substanceId: string; substanceName: string; quantity: number; unit: string; pricePerUnit: number; totalPrice: number; sellerId: string; sellerName: string; buyerId: string; buyerName: string; }' but required in type 'transactionUncheckedCreateInput'.
+src/services/notificationTriggers.ts(32,16): error TS2322: Type 'null' is not assignable to type 'string | NestedStringFilter<"user"> | undefined'.
+src/services/notificationTriggers.ts(55,32): error TS2551: Property 'strategicReserveClaim' does not exist on type 'PrismaClient<PrismaClientOptions, never, DefaultArgs>'. Did you mean 'strategicreserveclaim'?
+src/services/notificationTriggers.ts(61,12): error TS7006: Parameter 'rows' implicitly has an 'any' type.
+src/services/notificationTriggers.ts(61,31): error TS7006: Parameter 'r' implicitly has an 'any' type.
+src/services/notificationTriggers.ts(63,47): error TS7006: Parameter 'id' implicitly has an 'any' type.
+src/services/notificationTriggers.ts(69,16): error TS2322: Type 'null' is not assignable to type 'string | NestedStringFilter<"user"> | undefined'.
+src/services/vantagens.service.ts(1,24): error TS2305: Module '"@prisma/client"' has no exported member 'DeliveryType'.
+src/services/vantagens.service.ts(51,5): error TS2322: Type '{ productId: string; startTime: Date; endTime: Date; specialPrice: number; stockLimit: number; limitPerUser: number | undefined; unit: string; }' is not assignable to type '(Without<flashdealCreateInput, flashdealUncheckedCreateInput> & flashdealUncheckedCreateInput) | (Without<...> & flashdealCreateInput)'.
+  Type '{ productId: string; startTime: Date; endTime: Date; specialPrice: number; stockLimit: number; limitPerUser: number | undefined; unit: string; }' is not assignable to type 'Without<flashdealCreateInput, flashdealUncheckedCreateInput> & flashdealUncheckedCreateInput'.
+    Type '{ productId: string; startTime: Date; endTime: Date; specialPrice: number; stockLimit: number; limitPerUser: number | undefined; unit: string; }' is missing the following properties from type 'flashdealUncheckedCreateInput': id, updatedAt
+src/services/vantagens.service.ts(181,5): error TS2322: Type '{ productId: string; totalReserved: number; resetDate: Date; periodDays: number; unit: string; }' is not assignable to type '(Without<strategicquotaCreateInput, strategicquotaUncheckedCreateInput> & strategicquotaUncheckedCreateInput) | (Without<...> & strategicquotaCreateInput)'.
+  Type '{ productId: string; totalReserved: number; resetDate: Date; periodDays: number; unit: string; }' is not assignable to type 'Without<strategicquotaCreateInput, strategicquotaUncheckedCreateInput> & strategicquotaUncheckedCreateInput'.
+    Property 'updatedAt' is missing in type '{ productId: string; totalReserved: number; resetDate: Date; periodDays: number; unit: string; }' but required in type 'strategicquotaUncheckedCreateInput'.
+src/utils/jwt.ts(13,14): error TS2769: No overload matches this call.
+  Overload 1 of 5, '(payload: string | object | Buffer<ArrayBufferLike>, secretOrPrivateKey: null, options?: (SignOptions & { algorithm: "none"; }) | undefined): string', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'null'.
+  Overload 2 of 5, '(payload: string | object | Buffer<ArrayBufferLike>, secretOrPrivateKey: Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput, options?: SignOptions | undefined): string', gave the following error.
+    Type 'string' is not assignable to type 'number | StringValue | undefined'.
+  Overload 3 of 5, '(payload: string | object | Buffer<ArrayBufferLike>, secretOrPrivateKey: Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput, callback: SignCallback): void', gave the following error.
+    Object literal may only specify known properties, and 'expiresIn' does not exist in type 'SignCallback'.

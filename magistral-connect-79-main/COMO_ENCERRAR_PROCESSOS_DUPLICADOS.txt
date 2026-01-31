@@ -1,0 +1,70 @@
+═══════════════════════════════════════════════════════════════
+  COMO ENCERRAR PROCESSOS NODE.JS DUPLICADOS
+═══════════════════════════════════════════════════════════════
+
+Você tem vários processos Node.js rodando. Aqui está como verificar
+e encerrar os duplicados:
+
+═══════════════════════════════════════════════════════════════
+OPÇÃO 1: Usar o Script Automático (Recomendado)
+═══════════════════════════════════════════════════════════════
+
+1. Abra o PowerShell no diretório do projeto
+2. Execute:
+
+   .\encerrar-processos-duplicados.ps1
+
+Este script vai:
+  ✅ Manter processos do Cursor (helpers)
+  ✅ Manter processos usando portas 3001 (backend) e 8080 (frontend)
+  ✅ Encerrar apenas processos duplicados
+
+═══════════════════════════════════════════════════════════════
+OPÇÃO 2: Verificar Manualmente
+═══════════════════════════════════════════════════════════════
+
+1. Ver processos Node.js:
+   Get-Process -Name node
+
+2. Ver portas em uso:
+   netstat -ano | findstr "LISTENING" | findstr ":3001 :8080"
+
+3. Encerrar processo específico:
+   Stop-Process -Id <PID> -Force
+
+   Exemplo:
+   Stop-Process -Id 4264 -Force
+
+═══════════════════════════════════════════════════════════════
+OPÇÃO 3: Encerrar TODOS os Processos Node.js
+═══════════════════════════════════════════════════════════════
+
+⚠️  CUIDADO: Isso vai encerrar TODOS os processos Node.js,
+   incluindo o backend e frontend que estão rodando!
+
+   Get-Process -Name node | Stop-Process -Force
+
+   Depois, você precisará reiniciar o backend e frontend.
+
+═══════════════════════════════════════════════════════════════
+SITUAÇÃO ATUAL
+═══════════════════════════════════════════════════════════════
+
+✅ Porta 3001 (Backend): PID 32260 - RODANDO
+❌ Porta 8080 (Frontend): Nenhum processo - NÃO RODANDO
+
+Você tem 6 processos Node.js, mas apenas 1 está usando uma porta
+importante (backend na porta 3001).
+
+Alguns processos podem ser do Cursor (helpers) e devem ser mantidos.
+
+═══════════════════════════════════════════════════════════════
+RECOMENDAÇÃO
+═══════════════════════════════════════════════════════════════
+
+1. Execute o script: .\encerrar-processos-duplicados.ps1
+2. Depois, reinicie o frontend se necessário:
+   cd frontend (ou raiz do projeto)
+   npm run dev
+
+═══════════════════════════════════════════════════════════════

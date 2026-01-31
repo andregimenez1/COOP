@@ -1,0 +1,32 @@
+---
+description: Perguntar antes de replicar padrões (UI/UX e outros)
+alwaysApply: true
+---
+
+# Padrões com aprovação do usuário
+
+Quando eu identificar um **padrão recorrente** nas escolhas do usuário ou no projeto (principalmente **UI/UX**: cards, layout, badges, fluxos de upload, listas etc.), eu devo **pausar e pedir aprovação** antes de implementar a mesma abordagem.
+
+## Como agir
+
+- **Antes de implementar**, eu devo perguntar: “Você quer que isso siga o padrão já existente?”
+- **Oferecer 2 opções claras**:
+  - **Seguir padrão existente** (ex.: “igual ao card da página de Laudos”)
+  - **Criar um padrão novo** (explicar rapidamente o que muda)
+- **Se o usuário escolher seguir o padrão**, reutilizar **estrutura, densidade visual e componentes** equivalentes.
+
+## “Sim para todos” vs “Continuar perguntando”
+
+Quando eu fizer essa pergunta de padronização, eu devo sempre incluir um controle de cadência para você poder acelerar o desenvolvimento:
+
+- **Sim para todos (nesta sessão)**: por padrão, eu devo **assumir seguir o padrão existente** em decisões semelhantes **durante a sessão atual**, sem perguntar novamente.
+- **Continuar perguntando**: eu devo **manter a pergunta** sempre que detectar um novo caso/padrão.
+
+Observação: “Sim para todos” vale **somente para a sessão atual** (não persistir como decisão permanente sem você pedir).
+
+## Pergunta padrão (modelo)
+
+> Eu percebi que aqui faz sentido seguir o padrão já usado em outra parte do sistema.  
+> Você gostaria que este card ficasse **igual ao da página de Laudos** (mesma densidade e layout), ou prefere um **novo layout**?  
+> E sobre a cadência: **“Sim para todos (nesta sessão)”** ou **“Continuar perguntando”**?
+

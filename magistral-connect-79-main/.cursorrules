@@ -1,0 +1,263 @@
+# Cursor Rules - Magistral Connect
+
+## Proteção de Dados - CRÍTICO
+
+### Nunca perder dados existentes
+
+**REGRA FUNDAMENTAL**: Sempre que resolver erros de tipagem, conflitos ou atualizar schemas, encontre uma maneira de atualizar o schema SEM PERDER DADOS EXISTENTES.
+
+### Banco de Dados e Migrações
+
+- **NUNCA** sugira comandos que resetem ou façam drop do banco de dados
+- **SEMPRE** prefira migrações seguras que preservem dados existentes
+- Ao atualizar schemas de tipos TypeScript que afetam dados armazenados:
+  1. Primeiro, verifique se há dados existentes no localStorage
+  2. Crie funções de migração/transformação para converter dados antigos para o novo formato
+  3. Implemente validação e conversão automática ao carregar dados
+  4. Teste a migração com dados reais antes de aplicar
+
+### localStorage e Dados Persistentes
+
+Este projeto usa extensivamente `localStorage` para persistência. Ao fazer mudanças:
+
+1. **Nunca limpe ou reset dados sem backup**
+2. **Use `safeStorage.ts`** (`safeGetItem` e `safeSetItem`) para todas as operações de localStorage
+3. **Implemente migração automática** quando mudar estruturas de dados:
+   ```typescript
+   // Exemplo de migração segura
+   const loadData = () => {
+     const stored = localStorage.getItem('key');
+     if (!stored) return defaultValue;
+     
+     try {
+       const parsed = JSON.parse(stored);
+       // Migrar dados antigos para novo formato
+       if (!parsed.newField && parsed.oldField) {
+         parsed.newField = transformOldField(parsed.oldField);
+         delete parsed.oldField;
+         localStorage.setItem('key', JSON.stringify(parsed));
+       }
+       return parsed;
+     } catch {
+       // Se falhar, tentar restaurar de backup
+       return restoreFromBackup('key') || defaultValue;
+     }
+   };
+   ```
+
+### Atualização de Tipos TypeScript
+
+Ao atualizar interfaces/types que afetam dados armazenados:
+
+1. **Torne campos opcionais temporariamente** se necessário
+2. **Adicione valores padrão** para campos novos
+3. **Implemente conversão automática** ao carregar dados
+4. **Mantenha compatibilidade retroativa** sempre que possível
+
+### Exemplo de Atualização Segura de Schema
+
+```typescript
+// ANTES (evitar):
+interface User {
+  name: string;
+  email: string;
+}
+
+// DEPOIS (correto):
+interface User {
+  name: string;
+  email: string;
+  phone?: string; // Novo campo opcional
+  createdAt?: Date; // Campo opcional com valor padrão
+}
+
+// Função de migração ao carregar:
+const loadUser = (stored: any): User => {
+  return {
+    ...stored,
+    phone: stored.phone || '', // Valor padrão
+    createdAt: stored.createdAt 
+      ? (stored.createdAt instanceof Date ? stored.createdAt : new Date(stored.createdAt))
+      : new Date(), // Conversão segura de data
+  };
+};
+```
+
+### Proteção de Arrays e Objetos
+
+- **Nunca substitua arrays/objetos existentes por arrays/objetos vazios**
+- Use `safeSetItem` que protege contra sobrescrita acidental
+- Sempre faça backup antes de operações destrutivas
+
+### Tratamento de Erros
+
+Ao encontrar erros de tipagem ou conflitos:
+
+1. **Identifique a causa raiz** sem modificar dados
+2. **Crie uma solução de migração** que preserve dados existentes
+3. **Teste com dados reais** antes de aplicar
+4. **Documente a migração** para referência futura
+
+### Checklist Antes de Qualquer Mudança que Afete Dados
+
+- [ ] Verifique se há dados existentes no localStorage
+- [ ] Crie função de migração/transformação
+- [ ] Implemente validação e conversão automática
+- [ ] Use `safeStorage.ts` para operações
+- [ ] Teste com dados reais
+- [ ] Garanta compatibilidade retroativa
+- [ ] Documente mudanças no schema
+
+## Padrões de Código
+
+- Use TypeScript strict mode
+- Prefira interfaces sobre types quando possível
+- Documente mudanças que afetam dados persistentes
+- Sempre trate erros de parsing JSON com fallbacks
+
+## Verificação Prévia Completa - OBRIGATÓRIO
+
+### Regra Fundamental
+
+**SEMPRE faça uma verificação completa do ambiente antes de implementar qualquer solução.** Evitar tentativas que falham economiza muito mais tempo do que implementar diretamente.
+
+### Checklist Obrigatório Antes de Implementar
+
+Antes de implementar qualquer funcionalidade que use:
+- **Campos do banco de dados**: Verificar se a migração foi aplicada
+- **Endpoints da API**: Verificar se o endpoint existe e está funcionando
+- **Serviços/Funções**: Verificar se a função existe e está disponível
+- **Dependências**: Verificar se todas as dependências estão instaladas
+- **Configurações**: Verificar se variáveis de ambiente estão configuradas
+
+### Processo de Verificação
+
+1. **Verificar Schema/Migrações**:
+   - Verificar se a coluna/tabela existe no schema.prisma
+   - Verificar se a migração foi criada
+   - **VERIFICAR SE A MIGRAÇÃO FOI APLICADA NO BANCO** (consultar banco ou verificar logs)
+   - Se não foi aplicada, aplicar primeiro OU criar solução que funcione sem ela
+
+2. **Verificar Código Existente**:
+   - Buscar exemplos de uso similar no código
+   - Verificar se há funções/endpoints relacionados
+   - Verificar se há serviços que já fazem algo similar
+
+3. **Verificar Dependências**:
+   - Verificar se pacotes necessários estão instalados
+   - Verificar versões compatíveis
+
+4. **Plano de Execução**:
+   - Criar um plano passo a passo ANTES de começar
+   - Identificar possíveis pontos de falha
+   - Ter soluções alternativas prontas
+
+### Exemplos
+
+✅ **CORRETO**: 
+1. Verificar se migração foi aplicada
+2. Se não, aplicar migração OU criar solução que funcione sem ela
+3. Implementar funcionalidade
+
+❌ **ERRADO**: 
+1. Implementar funcionalidade
+2. Descobrir que migração não foi aplicada
+3. Tentar corrigir depois (perde tempo)
+
+### Quando Encontrar Problema
+
+Se descobrir que algo está faltando durante a verificação:
+- **NÃO implemente a solução que depende disso**
+- **PRIMEIRO** resolva a dependência (aplicar migração, instalar pacote, etc.)
+- **OU** crie uma solução que funcione sem a dependência
+- **DEPOIS** implemente a funcionalidade completa
+
+### Economia de Tempo
+
+- **Verificação prévia**: 2-5 minutos
+- **Tentativa que falha + correção**: 10-30 minutos
+- **Sempre prefira verificar primeiro**
+
+## Prioridades
+
+1. **Preservação de dados** - SEMPRE a prioridade máxima
+2. **Migração segura** - Sempre que possível
+3. **Compatibilidade retroativa** - Manter quando viável
+4. **Performance** - Importante, mas não à custa de perda de dados
+
+## Opções Simplificadas na Interface - PRIORIDADE MÁXIMA
+
+### Regra Fundamental
+
+**SEMPRE priorize opções simplificadas na interface do usuário** quando houver múltiplas formas de realizar uma tarefa.
+
+### Ordem de Prioridade para Soluções
+
+1. **PRIMEIRA OPÇÃO (SEMPRE)**: Adicionar botão/funcionalidade na interface do usuário
+   - Botões, diálogos, formulários na UI
+   - Acesso direto através da interface gráfica
+   - Experiência do usuário simplificada
+
+2. **SEGUNDA OPÇÃO**: Scripts ou comandos no terminal/console
+   - Apenas se não for viável adicionar na interface
+   - Documentar claramente como usar
+
+3. **TERCEIRA OPÇÃO**: Endpoints de API diretos
+   - Apenas para casos muito específicos ou administrativos
+   - Sempre documentar
+
+### Exemplos
+
+✅ **CORRETO**: "Vou adicionar um botão na página de Usuários para deletar por email"
+❌ **ERRADO**: "Você pode usar este comando no console do navegador..."
+
+✅ **CORRETO**: "Vou criar um formulário na interface para executar esta ação"
+❌ **ERRADO**: "Execute este script no terminal..."
+
+### Quando Implementar na Interface
+
+- **SEMPRE** quando a funcionalidade será usada mais de uma vez
+- **SEMPRE** quando melhora a experiência do usuário
+- **SEMPRE** quando reduz erros de digitação/comando
+- **SEMPRE** quando torna a ação mais acessível
+
+### Exceções
+
+Apenas NÃO implementar na interface se:
+- A funcionalidade for de uso único e muito específica
+- Requerer acesso direto ao sistema operacional
+- For uma operação de manutenção/debug muito técnica
+
+## Novidades na Transparência
+
+### Regra obrigatória
+
+- **Toda implementação, melhoria ou correção de bug** deve ser **resumida e registrada na aba Novidades** da página Transparência.
+- As notificações (novidades) ficam **primeiro disponíveis ao usuário administrador**, em estado **pendente de aprovação**.
+- O administrador **aprova diretamente** ou **edita e depois aprova**. Só então a novidade é **liberada** para os cooperados.
+- Ao ser aprovada, os **cooperados recebem notificação em tempo real** (SSE) e podem acessar a novidade na Transparência.
+
+### Fluxo
+
+1. Criar a novidade com `status: 'pending'` (só o master vê na lista).
+2. Master abre Transparência → aba Novidades → vê itens "Pendente de aprovação".
+3. Master clica em **Aprovar** (ou **Editar**, ajusta e depois **Aprovar**).
+4. Backend dispara SSE `transparency-news-approved` → cooperados logados recebem toast com link para a novidade.
+5. Cooperados passam a ver a novidade na aba Novidades.
+
+### Ao finalizar uma conversa ou sprint
+
+- **Resumir** o que foi implementado (funcionalidades, endpoints, mudanças de schema, etc.).
+- **Adicionar** esse resumo como nova novidade na Transparência (categoria `update`), em estado **pendente**.
+- O administrador irá aprovar para que os cooperados recebam a notificação.
+
+## Fluxo de Trabalho e Segurança de Código
+
+### Backup Obrigatório Antes de Ajustes
+
+**REGRA DE OURO**: Antes de modificar qualquer arquivo, o Cursor deve criar uma cópia de backup.
+
+1. **Backup Automático**: Antes de qualquer edição, crie `arquivo.ext.bak`.
+2. **Confirmação**: Ao finalizar as edições solicitadas pelo usuário, apresente o resumo das alterações e pergunte: "Você gostou das alterações ou deseja reverter para a versão anterior?".
+3. **Reversão**: Se o usuário solicitar a reversão, o conteúdo de `arquivo.ext.bak` deve sobrescrever o `arquivo.ext` modificado.
+4. **Limpeza**: Após a decisão do usuário (manter ou reverter), o arquivo `.bak` **DEVE** ser deletado imediatamente. Não acumular backups.

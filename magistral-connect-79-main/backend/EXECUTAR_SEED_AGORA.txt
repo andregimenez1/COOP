@@ -1,0 +1,70 @@
+═══════════════════════════════════════════════════════════════
+  EXECUTAR SEED AGORA - POPULAR BANCO DE DADOS
+═══════════════════════════════════════════════════════════════
+
+PROBLEMA: Todas as tabelas estão vazias (zero linhas)
+
+SOLUÇÃO: Execute o seed para criar os usuários iniciais
+
+═══════════════════════════════════════════════════════════════
+MÉTODO MAIS SIMPLES (RECOMENDADO)
+═══════════════════════════════════════════════════════════════
+
+1. Abra o PowerShell
+2. Execute estes comandos:
+
+   cd "c:\Users\NatuS ADM\Desktop\magistral-connect-79-main\backend"
+   node seed.js
+
+   Isso vai criar 6 usuários no banco!
+
+═══════════════════════════════════════════════════════════════
+MÉTODO ALTERNATIVO (se o anterior não funcionar)
+═══════════════════════════════════════════════════════════════
+
+1. Abra o PowerShell
+2. Execute:
+
+   cd "c:\Users\NatuS ADM\Desktop\magistral-connect-79-main\backend"
+   npm run prisma:seed
+
+   OU
+
+   npx tsx prisma/seed.ts
+
+═══════════════════════════════════════════════════════════════
+VERIFICAÇÃO
+═══════════════════════════════════════════════════════════════
+
+Após executar com sucesso:
+
+1. Abra phpMyAdmin: http://localhost/phpmyadmin
+2. Selecione o banco: magistral_connect
+3. Clique na tabela: User
+4. Deve mostrar 6 registros (linhas)
+
+Usuários criados:
+   ✓ admin@magistral.com / admin123 (master)
+   ✓ cooperado@magistral.com / coop123
+   ✓ usuario@magistral.com / user123
+   ✓ natural@magistral.com / natural123
+   ✓ farmagna@magistral.com / farmagna123
+   ✓ roseiras@magistral.com / roseiras123
+
+═══════════════════════════════════════════════════════════════
+SE DER ERRO
+═══════════════════════════════════════════════════════════════
+
+❌ "Cannot find module '@prisma/client'":
+   → Execute primeiro: npx prisma generate
+   → Depois: node seed.js
+
+❌ Erro de conexão com MySQL:
+   → Verifique se MySQL está rodando no XAMPP
+   → Verifique o arquivo .env (DATABASE_URL)
+
+❌ Erro de permissão:
+   → Feche processos Node.js
+   → Execute PowerShell como Administrador
+
+═══════════════════════════════════════════════════════════════
